@@ -1,4 +1,4 @@
-package com.example.finecontrolapp.ui.main.ui.ui.main;
+package com.example.finecontrolapp.ui.main;
 
 import androidx.lifecycle.ViewModel;
 
