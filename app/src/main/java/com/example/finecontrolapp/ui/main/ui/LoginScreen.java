@@ -7,6 +7,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.finecontrolapp.databinding.ActivityLoginScreenBinding;
+import com.example.finecontrolapp.ui.main.ui.ui.main.MainActivity;
 
 public class LoginScreen extends AppCompatActivity {
 
@@ -32,11 +33,11 @@ public class LoginScreen extends AppCompatActivity {
                 return;
             }
 
-            if (user.equals("admin") && pass.equals("1234")) {
+            if (user.equals("phe") && pass.equals("1234")) {
                 Toast.makeText(this, "Welcome!", Toast.LENGTH_SHORT).show();
                 // TODO: later navigate to MainActivity (home with bottom nav)
-                // startActivity(new Intent(this, MainActivity.class));
-                // finish();
+                 startActivity(new Intent(this, MainActivity.class));
+                 finish();
             } else {
                 Toast.makeText(this, "Invalid credentials", Toast.LENGTH_SHORT).show();
             }
