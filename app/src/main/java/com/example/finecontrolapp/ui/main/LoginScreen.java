@@ -1,4 +1,4 @@
-package com.example.finecontrolapp.ui.main.ui;
+package com.example.finecontrolapp.ui.main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,11 +7,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.finecontrolapp.databinding.ActivityLoginScreenBinding;
-import com.example.finecontrolapp.ui.main.ui.ui.main.MainActivity;
 
 public class LoginScreen extends AppCompatActivity {
 
-    private ActivityLoginScreenBinding binding; // ViewBinding class generated from activity_login.xml
+    private ActivityLoginScreenBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +34,6 @@ public class LoginScreen extends AppCompatActivity {
 
             if (user.equals("phe") && pass.equals("1234")) {
                 Toast.makeText(this, "Welcome!", Toast.LENGTH_SHORT).show();
-                // TODO: later navigate to MainActivity (home with bottom nav)
                  startActivity(new Intent(this, MainActivity.class));
                  finish();
             } else {

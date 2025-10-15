@@ -14,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.finecontrolapp.databinding.FragmentLoadingScreenBinding;
-import com.example.finecontrolapp.ui.main.ui.LoginScreen;
 
 public class LoadingScreenFragment extends Fragment {
 

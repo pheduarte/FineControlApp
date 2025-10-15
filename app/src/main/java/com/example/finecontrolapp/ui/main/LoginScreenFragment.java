@@ -1,10 +1,7 @@
-package com.example.finecontrolapp.ui.main.ui.ui.main;
-
-import static android.os.Build.VERSION_CODES_FULL.R;
+package com.example.finecontrolapp.ui.main;
 
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
