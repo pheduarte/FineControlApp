@@ -13,7 +13,7 @@
         <action
             android:id="@+id/action_signUpFragment_to_mainActivity"
             app:destination="@id/mainActivity"
-            app:popUpTo="@id/nav_graph"
+            app:popUpTo="@id/mainActivity"
             app:popUpToInclusive="true" />
     </fragment>
 

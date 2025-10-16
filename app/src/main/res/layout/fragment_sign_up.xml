@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,191 +7,204 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.login.SignUpFragment">
 
+    <!-- Card Background -->
+
+    <!-- App Logo -->
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="400dp"
-        android:layout_height="700dp"
-        android:scaleType="centerCrop"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:scaleType="fitXY"
         android:src="@drawable/cardview"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.407"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.205" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="50dp"
         android:src="@drawable/logo_finecontrol"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/bgFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:src="@drawable/txtfield"
+        android:src="@drawable/textfield"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/bgLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/txtfield"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/textfield"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        app:layout_constraintTop_toBottomOf="@+id/bgFirstName" />
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/bgEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/txtfield"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/textfield"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+        app:layout_constraintTop_toBottomOf="@+id/bgLastName" />
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/bgPhoneNumber"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/txtfield"
+        android:layout_height="48dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/textfield"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+        app:layout_constraintTop_toBottomOf="@+id/bgEmail" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/bgPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/txtfield"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/textfield"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+        app:layout_constraintTop_toBottomOf="@+id/bgPhoneNumber" />
 
     <ImageView
-        android:id="@+id/imageView11"
+        android:id="@+id/bgPassword2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/txtfield"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/textfield"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+        app:layout_constraintTop_toBottomOf="@+id/bgPassword" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSignUp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
-        android:layout_marginTop="156dp"
         android:backgroundTint="#3535FF"
-        android:paddingHorizontal="130dp"
-        android:paddingLeft="90dp"
-        android:paddingRight="90dp"
-        android:text="@string/btnSignup"
+        android:paddingVertical="12dp"
+        android:text="Sign up"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        android:textSize="18sp"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView11"
-        app:layout_constraintVertical_bias="0.776" />
+        app:layout_constraintStart_toStartOf="@+id/imageView2" />
 
+    <!-- 1. First Name EditText -->
     <EditText
         android:id="@+id/txtFirstName"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="16dp"
         android:background="@null"
         android:ems="10"
         android:hint="First Name"
         android:inputType="textPersonName"
         android:textColorHint="@color/Secondary"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
-        app:layout_constraintEnd_toEndOf="@+id/imageView6"
-        app:layout_constraintStart_toStartOf="@+id/imageView6"
-        app:layout_constraintTop_toTopOf="@+id/imageView6" />
+        app:layout_constraintBottom_toBottomOf="@+id/bgFirstName"
+        app:layout_constraintEnd_toEndOf="@+id/bgFirstName"
+        app:layout_constraintStart_toStartOf="@+id/bgFirstName"
+        app:layout_constraintTop_toTopOf="@+id/bgFirstName" />
 
+    <!-- 2. Last Name EditText -->
     <EditText
         android:id="@+id/txtLastName"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
+        android:layout_width="0dp"
+        android:layout_height="38dp"
+        android:layout_marginHorizontal="16dp"
         android:background="@null"
         android:ems="10"
         android:hint="Last Name"
         android:inputType="textPersonName"
         android:textColorHint="@color/Secondary"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
-        app:layout_constraintEnd_toEndOf="@+id/imageView7"
-        app:layout_constraintStart_toStartOf="@+id/imageView7"
-        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+        app:layout_constraintBottom_toBottomOf="@+id/bgLastName"
+        app:layout_constraintEnd_toEndOf="@+id/bgLastName"
+        app:layout_constraintStart_toStartOf="@+id/bgLastName" />
 
+    <!-- 3. Email EditText -->
     <EditText
         android:id="@+id/txtEmail"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="16dp"
         android:background="@null"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:textColorHint="@color/Secondary"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView8"
-        app:layout_constraintEnd_toEndOf="@+id/imageView8"
-        app:layout_constraintStart_toStartOf="@+id/imageView8"
-        app:layout_constraintTop_toTopOf="@+id/imageView8" />
+        app:layout_constraintBottom_toBottomOf="@+id/bgEmail"
+        app:layout_constraintEnd_toEndOf="@+id/bgEmail"
+        app:layout_constraintStart_toStartOf="@+id/bgEmail"
+        app:layout_constraintTop_toTopOf="@+id/bgEmail" />
 
+    <!-- 4. Phone Number EditText -->
+
+    <!-- 5. Password EditText -->
     <EditText
         android:id="@+id/txtPhoneNumber"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="16dp"
         android:background="@null"
         android:ems="10"
         android:hint="Phone Number"
         android:inputType="phone"
         android:textColorHint="@color/Secondary"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView9"
-        app:layout_constraintEnd_toEndOf="@+id/imageView9"
-        app:layout_constraintStart_toStartOf="@+id/imageView9"
-        app:layout_constraintTop_toTopOf="@+id/imageView9" />
+        app:layout_constraintBottom_toBottomOf="@+id/bgPhoneNumber"
+        app:layout_constraintEnd_toEndOf="@+id/bgPhoneNumber"
+        app:layout_constraintStart_toStartOf="@+id/bgPhoneNumber"
+        app:layout_constraintTop_toTopOf="@+id/bgPhoneNumber"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/txtPassword"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
+        android:layout_width="0dp"
+        android:layout_height="38dp"
+        android:layout_marginHorizontal="16dp"
         android:background="@null"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
         android:textColorHint="@color/Secondary"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView10"
-        app:layout_constraintEnd_toEndOf="@+id/imageView10"
-        app:layout_constraintStart_toStartOf="@+id/imageView10"
-        app:layout_constraintTop_toTopOf="@+id/imageView10" />
+        app:layout_constraintBottom_toBottomOf="@+id/bgPassword"
+        app:layout_constraintEnd_toEndOf="@+id/bgPassword"
+        app:layout_constraintStart_toStartOf="@+id/bgPassword" />
 
+    <!-- 6. Re-enter Password EditText -->
     <EditText
         android:id="@+id/txtPassword2"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
+        android:layout_width="0dp"
+        android:layout_height="38dp"
+        android:layout_marginHorizontal="16dp"
         android:background="@null"
         android:ems="10"
         android:hint="Re-enter password"
         android:inputType="textPassword"
         android:textColorHint="@color/Secondary"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView11"
-        app:layout_constraintEnd_toEndOf="@+id/imageView11"
-        app:layout_constraintStart_toStartOf="@+id/imageView11"
-        app:layout_constraintTop_toTopOf="@+id/imageView11" />
-
+        app:layout_constraintEnd_toEndOf="@+id/bgPassword2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/bgPassword2"
+        app:layout_constraintTop_toTopOf="@+id/bgPassword2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
