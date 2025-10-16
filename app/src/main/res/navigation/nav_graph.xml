@@ -10,6 +10,7 @@
         android:name="com.example.finecontrolapp.ui.main.login.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" />
+
     <fragment
         android:id="@+id/loginScreenFragment"
         android:name="com.example.finecontrolapp.ui.main.login.LoginScreenFragment"

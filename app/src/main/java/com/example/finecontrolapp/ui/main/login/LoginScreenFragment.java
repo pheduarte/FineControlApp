@@ -62,9 +62,11 @@ public class LoginScreenFragment extends Fragment {
 
             if (user.equals("phe") && pass.equals("1234")) {
                 Toast.makeText(getContext(), "Welcome!", Toast.LENGTH_SHORT).show();
-                LoginScreenFragmentDirections.ActionLoginScreenFragmentToMainActivity action =
-                        LoginScreenFragmentDirections.actionLoginScreenFragmentToMainActivity(user);
-                NavHostFragment.findNavController(LoginScreenFragment.this).navigate(action);
+//                LoginScreenFragmentDirections.ActionLoginScreenFragmentToMainActivity action =
+//                        LoginScreenFragmentDirections.actionLoginScreenFragmentToMainActivity(user);
+//                NavHostFragment.findNavController(LoginScreenFragment.this).navigate(action);
+                NavHostFragment.findNavController(LoginScreenFragment.this)
+                        .navigate(R.id.action_loginScreenFragment_to_mainActivity);
             } else {
                 Toast.makeText(getContext(), "Invalid credentials", Toast.LENGTH_SHORT).show();
             }

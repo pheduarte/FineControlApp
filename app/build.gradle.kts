@@ -6,6 +6,7 @@ android {
     namespace = "com.example.finecontrolapp"
     compileSdk {
         version = release(36)
+
     }
 
     defaultConfig {
@@ -52,4 +53,11 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation("androidx.navigation:navigation-fragment:2.7.7")
+    implementation("androidx.navigation:navigation-ui:2.7.7")
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.7.7")
+}
+
+android {
+    buildFeatures { viewBinding = true }
 }
