@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginScreenFragment">
+    app:startDestination="@id/loadingScreenFragment">
 
     <fragment
         android:id="@+id/signUpFragment"
@@ -40,4 +40,18 @@
             android:name="user"
             app:argType="string" />
     </activity>
+
+    <fragment
+        android:id="@+id/loadingScreenFragment"
+        android:name="com.example.finecontrolapp.ui.main.LoadingScreenFragment"
+        android:label="fragment_loading_screen"
+        tools:layout="@layout/fragment_loading_screen" >
+        <action
+            android:id="@+id/action_loadingScreenFragment_to_loginScreen"
+            app:destination="@id/loginScreen" />
+    </fragment>
+    <activity
+        android:id="@+id/loginScreen"
+        android:name="com.example.finecontrolapp.ui.main.login.LoginScreen"
+        android:label="LoginScreen" />
 </navigation>

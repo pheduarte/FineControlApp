@@ -1,12 +1,20 @@
 package com.example.finecontrolapp.ui.main.data;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "users")
+
 public class User {
-    private String fName;
-    private String lName;
-    private String email;
-    private int phoneNumber;
-    private String password;
-    private int userID;
+
+    @PrimaryKey(autoGenerate = true)
+    public int userID;
+
+    public String fName;
+    public String lName;
+    public String email;
+    public int phoneNumber;
+    public String password;
 
     public User(String fName, String lName, String email, int phoneNumber, String password) {
         this.fName = fName;

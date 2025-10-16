@@ -8,11 +8,13 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.finecontrolapp.R;
 import com.example.finecontrolapp.databinding.FragmentLoadingScreenBinding;
 import com.example.finecontrolapp.ui.main.login.LoginScreen;
 
@@ -45,8 +47,10 @@ public class LoadingScreenFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         binding.btnStart.setOnClickListener(v -> {
-            startActivity(new Intent(requireActivity(), LoginScreen.class));
-            requireActivity().finish(); // close the splash screen activity
+//            startActivity(new Intent(requireActivity(), LoginScreen.class));
+//            requireActivity().finish(); // close the splash screen activity
+            NavHostFragment.findNavController(LoadingScreenFragment.this)
+                    .navigate(R.id.action_loadingScreenFragment_to_loginScreen);
         });
     }
 
