@@ -1,11 +1,13 @@
 plugins {
     alias(libs.plugins.android.application)
+    id("androidx.navigation.safeargs")
 }
 
 android {
     namespace = "com.example.finecontrolapp"
     compileSdk {
         version = release(36)
+
     }
 
     defaultConfig {
@@ -46,6 +48,16 @@ dependencies {
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.annotation)
     implementation(libs.fragment)
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
+    implementation(libs.legacy.support.v4)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.ext.junit)
+    androidTestImplementation(libs.espresso.core)
+    implementation("androidx.navigation:navigation-fragment:2.7.7")
+    implementation("androidx.navigation:navigation-ui:2.7.7")
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.7.7")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

@@ -4,8 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import com.example.finecontrolapp.BudgetFragment;
 import com.example.finecontrolapp.HomeFragment;
@@ -13,6 +13,7 @@ import com.example.finecontrolapp.NewFragment;
 import com.example.finecontrolapp.ProfileFragment;
 import com.example.finecontrolapp.R;
 import com.example.finecontrolapp.databinding.NavBarMenuBinding;
+import com.example.finecontrolapp.ui.main.TransactionsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,43 +24,28 @@ public class MainActivity extends AppCompatActivity {
         NavBarMenuBinding binding = NavBarMenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new HomeFragment());
-            }
-        });
+        Intent intent = getIntent();
+        String user = intent.getStringExtra("user");
 
-        binding.btnTransactions.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new TransactionsFragment());
-            }
-        });
-
-
-        binding.btnNew.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new NewFragment());
-            }
-        });
-
-        binding.btnBudget.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new BudgetFragment());
-            }
-        });
-
-        binding.btnProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new ProfileFragment());
-            }
-        });
-
+        if (savedInstanceState == null) {
+            HomeFragment homeFragment = HomeFragment.newInstance(user);
+            replaceFragment(homeFragment);
         }
+
+        binding.btnHome.setOnClickListener(v -> {
+            HomeFragment homeFragment = HomeFragment.newInstance(user);
+            replaceFragment(homeFragment);
+        });
+
+        binding.btnTransactions.setOnClickListener(v -> replaceFragment(new TransactionsFragment()));
+
+        binding.btnNew.setOnClickListener(v -> replaceFragment(new NewFragment()));
+
+        binding.btnBudget.setOnClickListener(v -> replaceFragment(new BudgetFragment()));
+
+        binding.btnProfile.setOnClickListener(v -> replaceFragment(new ProfileFragment()));
+
+    }
 
     private void replaceFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -67,4 +53,3 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
     }
 }
-
