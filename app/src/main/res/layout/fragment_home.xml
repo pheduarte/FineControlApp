@@ -54,13 +54,15 @@
         android:id="@+id/profile_icon_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="56dp"
         android:layout_marginBottom="32dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
 
+        android:background="?attr/selectableItemBackgroundBorderless"
         android:src="@drawable/avatar"
         app:layout_constraintBottom_toBottomOf="@+id/header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.772"
-        app:layout_constraintStart_toEndOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/imageButton3"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
