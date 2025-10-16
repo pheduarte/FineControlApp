@@ -47,10 +47,8 @@ public class LoadingScreenFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         binding.btnStart.setOnClickListener(v -> {
-//            startActivity(new Intent(requireActivity(), LoginScreen.class));
-//            requireActivity().finish(); // close the splash screen activity
             NavHostFragment.findNavController(LoadingScreenFragment.this)
-                    .navigate(R.id.action_loadingScreenFragment_to_loginScreen);
+                    .navigate(R.id.action_loadingScreenFragment_to_loginScreenFragment);
         });
     }
 

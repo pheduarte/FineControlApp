@@ -47,11 +47,7 @@
         android:label="fragment_loading_screen"
         tools:layout="@layout/fragment_loading_screen" >
         <action
-            android:id="@+id/action_loadingScreenFragment_to_loginScreen"
-            app:destination="@id/loginScreen" />
+            android:id="@+id/action_loadingScreenFragment_to_loginScreenFragment"
+            app:destination="@id/loginScreenFragment" />
     </fragment>
-    <activity
-        android:id="@+id/loginScreen"
-        android:name="com.example.finecontrolapp.ui.main.login.LoginScreen"
-        android:label="LoginScreen" />
 </navigation>
