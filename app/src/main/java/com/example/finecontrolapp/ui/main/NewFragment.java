@@ -1,4 +1,4 @@
-package com.example.finecontrolapp;
+package com.example.finecontrolapp.ui.main;
 
 import android.os.Bundle;
 

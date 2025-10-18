@@ -1,6 +1,8 @@
 package com.example.finecontrolapp.ui.main.login;
 
 import androidx.lifecycle.ViewModelProvider;
+
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,10 +14,12 @@ import android.widget.Toast;
 import androidx.navigation.fragment.NavHostFragment;
 import com.example.finecontrolapp.R;
 import com.example.finecontrolapp.databinding.FragmentLoginScreenBinding;
+import com.example.finecontrolapp.ui.main.MainActivity;
 
 public class LoginScreenFragment extends Fragment {
 
     private LoginViewModel mViewModel;
+
     private FragmentLoginScreenBinding binding;
 
     public static LoginScreenFragment newInstance() {
@@ -25,8 +29,11 @@ public class LoginScreenFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+//        mViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         // TODO: Use the ViewModel
+        LoginViewModel viewModel = new ViewModelProvider(
+                requireActivity()
+        ).get(LoginViewModel.class);
     }
 
     @Nullable
@@ -63,8 +70,15 @@ public class LoginScreenFragment extends Fragment {
             if (user.equals("phe") && pass.equals("1234")) {
                 Toast.makeText(getContext(), "Welcome!", Toast.LENGTH_SHORT).show();
 
-                NavHostFragment.findNavController(LoginScreenFragment.this)
-                        .navigate(R.id.action_loginScreenFragment_to_mainActivity);
+                // ✅ Start MainActivity manually instead of using NavController
+                Intent intent = new Intent(requireContext(), MainActivity.class);
+                startActivity(intent);
+
+                // Optional: close the LoginScreen Activity so user can’t go back
+                requireActivity().finish();
+//
+//                NavHostFragment.findNavController(LoginScreenFragment.this)
+//                        .navigate(R.id.action_loginScreenFragment_to_mainActivity);
             } else {
                 Toast.makeText(getContext(), "Invalid credentials", Toast.LENGTH_SHORT).show();
             }
