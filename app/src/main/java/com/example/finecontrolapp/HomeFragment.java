@@ -35,12 +35,13 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        if (getArguments() != null) {
-            String user = getArguments().getString(ARG_USER);
-            if ("phe".equals(user)) {
-                binding.hiUserName.setText("Hi, Phelippe!");
-            }
-        }
+//        if (getArguments() != null) {
+//            String user = getArguments().getString(ARG_USER);
+//            if ("phe".equals(user)) {
+//                binding.hiUserName.setText("Hi, Phelippe!");
+//            }
+//        }
+
 
         binding.profileIconHeader.setOnClickListener(v -> {
             FragmentTransaction transaction = getParentFragmentManager().beginTransaction();

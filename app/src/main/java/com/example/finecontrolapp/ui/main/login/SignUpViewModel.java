@@ -1,20 +1,25 @@
 package com.example.finecontrolapp.ui.main.login;
 
 import androidx.lifecycle.ViewModel;
-
-import com.example.finecontrolapp.databinding.FragmentSignUpBinding;
 import com.example.finecontrolapp.ui.main.data.User;
 
 public class SignUpViewModel extends ViewModel {
-    private FragmentSignUpBinding binding;
 
-    public User GetUserDetails() {
-        String fName = binding.txtFirstName.getText().toString();
-        String lName = binding.txtLastName.getText().toString();
-        String email = binding.txtEmail.getText().toString();
-        int password = Integer.parseInt(binding.txtPassword.getText().toString());
-        String phoneNumber = binding.txtPhoneNumber.getText().toString();
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String password;
+    private int phoneNumber;
 
-        return new User(fName, lName, email, password, phoneNumber);
+    public void setUserDetails(String fName, String lName, String email, int phone, String pass) {
+        this.firstName = fName;
+        this.lastName = lName;
+        this.email = email;
+        this.phoneNumber = phone;
+        this.password = pass;
+    }
+
+    public User getUser() {
+        return new User(firstName, lastName, email, phoneNumber, password);
     }
 }
