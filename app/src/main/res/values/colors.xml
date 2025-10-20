@@ -4,4 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="Secondary">#BFAFD7</color>
     <color name="stroke_item">#E5E7EB</color>
+    <color name="primary">#3535FF</color>
+    <color name="redExpense">#FB2C36</color>
+    <color name="greenIncome">#20C200</color>
+
 </resources>
