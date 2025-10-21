@@ -1,5 +1,6 @@
 package com.example.finecontrolapp.ui.main.data;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -7,14 +8,15 @@ import androidx.room.PrimaryKey;
 
 public class User {
 
-    @PrimaryKey(autoGenerate = true)
-    public int userID;
+    @PrimaryKey
+    @NonNull
+    public String email;
 
     public String fName;
     public String lName;
-    public String email;
     public int phoneNumber;
     public String password;
+    public int userID;
 
     public User(String fName, String lName, String email, int phoneNumber, String password) {
         this.fName = fName;

@@ -7,10 +7,16 @@ import androidx.lifecycle.LiveData;
 import com.example.finecontrolapp.ui.main.data.local.AppDataBase;
 import com.example.finecontrolapp.ui.main.data.local.UserDAO;
 import com.example.finecontrolapp.ui.main.data.User;
+import android.content.Context;
+import android.os.Looper;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.function.Consumer;
+import android.os.Handler;
+import android.os.Looper;
+
 
 
 public class LoginRepository {
@@ -35,5 +41,15 @@ public class LoginRepository {
     public void insert(User user) {
         executorService.execute(() -> userDAO.insert(user));
     }
+
+    public void verifyCredentials(String email, String password, Consumer<Boolean> callback) {
+        executorService.execute(() -> {
+            User user = userDAO.getUserNow(email);
+            boolean isValid = (user != null && user.password.equals(password));
+
+            new Handler(Looper.getMainLooper()).post(() -> callback.accept(isValid));
+        });
+    }
+
 
 }

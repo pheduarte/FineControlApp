@@ -1,5 +1,6 @@
 package com.example.finecontrolapp.ui.main.login;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
@@ -33,7 +34,7 @@ public class SignUpFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // ✅ Safe to get ViewModels here
+        // Safe to get ViewModels here
         loginViewModel = new ViewModelProvider(requireActivity()).get(LoginViewModel.class);
         signUpViewModel = new ViewModelProvider(this).get(SignUpViewModel.class);
     }
@@ -51,7 +52,7 @@ public class SignUpFragment extends Fragment {
 
         binding.btnSignUp.setOnClickListener(v -> {
             try {
-                // ✅ Collect user details safely
+                // Collect user details
                 String fName = binding.txtFirstName.getText().toString().trim();
                 String lName = binding.txtLastName.getText().toString().trim();
                 String email = binding.txtEmail.getText().toString().trim();
@@ -67,25 +68,35 @@ public class SignUpFragment extends Fragment {
                 int phoneNumber = Integer.parseInt(phoneText);
 
                 User newUser = new User(fName, lName, email, phoneNumber, password);
-                loginViewModel.register(newUser);
 
-                Toast.makeText(getContext(), "User Registered Successfully!", Toast.LENGTH_SHORT).show();
+                loginViewModel.getUser(email).observe(getViewLifecycleOwner(), new Observer<User>() {
+                    @Override
+                    public void onChanged(User user) {
+                        if (user != null) {
+                            Toast.makeText(getContext(), "User already exists, sign in instead", Toast.LENGTH_SHORT).show();
 
-                // Navigate to main activity
-//                NavHostFragment.findNavController(SignUpFragment.this)
-//                        .navigate(R.id.action_signUpFragment_to_mainActivity,
-//                                null,
-//                                new NavOptions.Builder().setPopUpTo(R.id.nav_graph, true).build());
-                Intent intent = new Intent(requireContext(), MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                requireActivity().finish();
+                        } else {
+                            loginViewModel.register(newUser);
+
+                            new android.os.Handler().postDelayed(() -> {
+                                Toast.makeText(getContext(), "User Registered Successfully!", Toast.LENGTH_SHORT).show();
+
+                                Intent intent = new Intent(requireContext(), MainActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                                requireActivity().finish();
+                            }, 300);
+                    }
+                        loginViewModel.getUser(email).removeObserver(this);
+                    }
+                });
 
             } catch (NumberFormatException e) {
                 Toast.makeText(getContext(), "Invalid phone number", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 
     @Override
     public void onDestroyView() {

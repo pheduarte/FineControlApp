@@ -18,6 +18,10 @@ public interface UserDAO {
     @Query("SELECT * FROM users WHERE email = :email LIMIT 1")
     LiveData<User> getUserByEmail(String email);
 
+    @Query("SELECT * FROM users WHERE email = :email LIMIT 1")
+    User getUserNow(String email);
+
     @Query("SELECT * FROM users")
     LiveData<List<User>> getAllUsers();
+
 }
