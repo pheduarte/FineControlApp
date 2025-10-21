@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import com.example.finecontrolapp.databinding.FragmentTransactionsBinding;
 
 
-public class TransactionsFragment extends Fragment {
+public class  TransactionsFragment extends Fragment {
 
     private FragmentTransactionsBinding binding;
 

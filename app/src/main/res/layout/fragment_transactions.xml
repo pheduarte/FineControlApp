@@ -3,16 +3,88 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroud_main">
+
+    <ImageView
+        android:id="@+id/card_transactions"
+        android:layout_width="377dp"
+        android:layout_height="142dp"
+        android:layout_marginTop="90dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/card" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="16dp"
+        android:text="Transactions"
+        android:textColor="#101828"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView10"
+        app:layout_constraintStart_toStartOf="@+id/card_transactions" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="212dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="24dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/card_transactions"
+        app:layout_constraintStart_toStartOf="@+id/card_transactions"
+        app:srcCompat="@drawable/textfield" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/myButton"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/primary"
+        android:text="Filter"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/filter"
+        app:iconGravity="textStart"
+        app:iconPadding="8dp"
+        app:iconTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/card_transactions"
+        app:layout_constraintEnd_toEndOf="@+id/card_transactions"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView10" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="377dp"
+        android:layout_height="600dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_transactions"
+        app:srcCompat="@drawable/card" />
+
+    <TextView
+        android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Teste: TransactionsFragment"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="All transactions"
+        android:textColor="#101828"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/imageView9"
+        app:layout_constraintTop_toTopOf="@+id/imageView9" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
