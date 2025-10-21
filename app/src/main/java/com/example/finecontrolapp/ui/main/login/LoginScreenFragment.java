@@ -29,11 +29,7 @@ public class LoginScreenFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        mViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
-        // TODO: Use the ViewModel
-        LoginViewModel viewModel = new ViewModelProvider(
-                requireActivity()
-        ).get(LoginViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
     }
 
     @Nullable
@@ -54,34 +50,34 @@ public class LoginScreenFragment extends Fragment {
         });
 
         binding.btnLogin.setOnClickListener(v -> {
-            String user = binding.etUsername.getText().toString().trim();
-            String pass = binding.etPassword.getText().toString().trim();
+            String email = binding.etUsername.getText().toString().trim();
+            String password = binding.etPassword.getText().toString().trim();
 
             // super simple placeholder validation
-            if (user.isEmpty()) {
+            if (email.isEmpty()) {
                 binding.etUsername.setError("Required");
                 return;
             }
-            if (pass.isEmpty()) {
+            if (password.isEmpty()) {
                 binding.etPassword.setError("Required");
                 return;
             }
 
-            if (user.equals("phe") && pass.equals("1234")) {
-                Toast.makeText(getContext(), "Welcome!", Toast.LENGTH_SHORT).show();
+            mViewModel.verifyUser(email, password, isValid -> {
+                if (isValid) {
+                    Toast.makeText(getContext(), "Welcome!", Toast.LENGTH_SHORT).show();
 
-                // ✅ Start MainActivity manually instead of using NavController
-                Intent intent = new Intent(requireContext(), MainActivity.class);
-                startActivity(intent);
+                    Intent intent = new Intent(requireContext(), MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    requireActivity().finish();
 
-                // Optional: close the LoginScreen Activity so user can’t go back
-                requireActivity().finish();
-//
-//                NavHostFragment.findNavController(LoginScreenFragment.this)
-//                        .navigate(R.id.action_loginScreenFragment_to_mainActivity);
-            } else {
-                Toast.makeText(getContext(), "Invalid credentials", Toast.LENGTH_SHORT).show();
-            }
+                    // close the LoginScreen Activity so user can’t go back
+                    requireActivity().finish();
+                } else {
+                    Toast.makeText(getContext(), "Invalid credentials!", Toast.LENGTH_SHORT).show();
+                }
+            });
         });
     }
 

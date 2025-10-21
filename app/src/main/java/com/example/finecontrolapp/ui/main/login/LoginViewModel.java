@@ -10,12 +10,12 @@ import com.example.finecontrolapp.ui.main.data.User;
 import com.example.finecontrolapp.ui.main.data.repository.LoginRepository;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class LoginViewModel extends AndroidViewModel {
 
     private final LoginRepository repository;
 
-    // ✅ AndroidViewModel gives you getApplication()
     public LoginViewModel(@NonNull Application application) {
         super(application);
         repository = new LoginRepository(application);
@@ -32,4 +32,13 @@ public class LoginViewModel extends AndroidViewModel {
     public LiveData<List<User>> getAllUsers() {
         return repository.getAllUsers();
     }
+
+    public void verifyUser(String email, String password, Consumer<Boolean> callback) {
+        repository.verifyCredentials(email, password, callback);
+    }
+
 }
+
+
+
+
