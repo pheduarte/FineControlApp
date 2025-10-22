@@ -57,8 +57,6 @@ public class  TransactionsFragment extends Fragment {
                     .observe(getViewLifecycleOwner(), adapter::setTransactions);
         }
 
-        viewModel.insert(new Transactions("Bread", "expense", 3.40, "Grocery", "2023-06-1", email));
-
     }
 
     @Override

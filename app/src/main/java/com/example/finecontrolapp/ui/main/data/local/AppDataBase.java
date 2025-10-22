@@ -11,10 +11,17 @@ import androidx.room.RoomDatabase;
 import com.example.finecontrolapp.ui.main.data.Transactions;
 import com.example.finecontrolapp.ui.main.data.User;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 @Database(entities = {User.class, Transactions.class}, version = 2)
 
 public abstract class AppDataBase extends RoomDatabase{
     private static volatile AppDataBase INSTANCE;
+
+    private static final int NUMBER_OF_THREADS = 4;
+    public static final ExecutorService databaseWriteExecutor =
+            Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     public abstract UserDAO userDAO();
     public abstract TransactionsDAO transactionDAO();

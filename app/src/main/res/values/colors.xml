@@ -7,5 +7,6 @@
     <color name="primary">#3535FF</color>
     <color name="redExpense">#FB2C36</color>
     <color name="greenIncome">#20C200</color>
+    <color name="neutralGray">#E0E0E0</color>
 
 </resources>
