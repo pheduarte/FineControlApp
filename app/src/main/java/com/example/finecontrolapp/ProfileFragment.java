@@ -1,6 +1,8 @@
 package com.example.finecontrolapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,11 +39,18 @@ public class ProfileFragment extends Fragment {
 
 
         binding.btnLogout.setOnClickListener( v -> {
+
+            SharedPreferences prefs = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
+            prefs.edit().clear().apply();
+
             Intent intent = new Intent(requireContext(), LoginScreen.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
+
             requireActivity().finish();
+
         });
+
     }
 
     @Override
@@ -49,4 +58,6 @@ public class ProfileFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
 }
