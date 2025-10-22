@@ -3,7 +3,9 @@ package com.example.finecontrolapp.ui.main.login;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -81,11 +83,15 @@ public class SignUpFragment extends Fragment {
                             new android.os.Handler().postDelayed(() -> {
                                 Toast.makeText(getContext(), "User Registered Successfully!", Toast.LENGTH_SHORT).show();
 
+                                // Save user details to SharedPreferences
+                                SharedPreferences prefs = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
+                                prefs.edit().putString("logged_in_email", email).apply();
+
                                 Intent intent = new Intent(requireContext(), MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
                                 requireActivity().finish();
-                            }, 300);
+                            }, 400);
                     }
                         loginViewModel.getUser(email).removeObserver(this);
                     }

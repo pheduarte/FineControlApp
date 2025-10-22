@@ -2,7 +2,9 @@ package com.example.finecontrolapp.ui.main.login;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -65,6 +67,10 @@ public class LoginScreenFragment extends Fragment {
 
             mViewModel.verifyUser(email, password, isValid -> {
                 if (isValid) {
+
+                    SharedPreferences prefs = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
+                    prefs.edit().putString("logged_in_email", email).apply();
+
                     Toast.makeText(getContext(), "Welcome!", Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(requireContext(), MainActivity.class);

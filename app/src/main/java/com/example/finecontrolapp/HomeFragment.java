@@ -1,14 +1,19 @@
 package com.example.finecontrolapp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.finecontrolapp.databinding.FragmentHomeBinding;
+import com.example.finecontrolapp.ui.main.login.MainActivityViewModel;
 
 public class HomeFragment extends Fragment {
 
@@ -35,22 +40,38 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        if (getArguments() != null) {
-//            String user = getArguments().getString(ARG_USER);
-//            if ("phe".equals(user)) {
-//                binding.hiUserName.setText("Hi, Phelippe!");
-//            }
-//        }
+        MainActivityViewModel mainActivityViewModel = new ViewModelProvider(requireActivity()).get(MainActivityViewModel.class);
 
+        // Get logged-in email from SharedPreferences
+        SharedPreferences prefs = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
+        String email = prefs.getString("logged_in_email", null);
 
-        binding.profileIconHeader.setOnClickListener(v -> {
-            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-            transaction.replace(R.id.containerMain, new ProfileFragment());
-            transaction.addToBackStack(null);
-            transaction.commit();
-        });
+        if (email != null) {
+            // Fetch the first name from Room via ViewModel
+            mainActivityViewModel.getFirstName(email).observe(getViewLifecycleOwner(), fName -> {
+                if (fName != null) {
+                    binding.hiUserName.setText(String.format("Hi, %s!", fName));
+
+                        if (fName.length() > 15) {
+                            binding.hiUserName.setTextSize(25);
+                        }
+
+                } else {
+                    binding.hiUserName.setText(R.string.hi_userName);
+                }
+            });
+
+            // Set click listener for profile icon and navigate to Profile Screen
+            binding.profileIconHeader.setOnClickListener(v -> {
+                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                transaction.replace(R.id.containerMain, new ProfileFragment());
+                transaction.addToBackStack(null);
+                transaction.commit();
+            });
+        }
     }
 
+    // Destroy binding
     @Override
     public void onDestroyView() {
         super.onDestroyView();

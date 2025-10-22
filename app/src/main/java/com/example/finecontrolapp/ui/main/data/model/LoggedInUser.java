@@ -5,16 +5,21 @@ package com.example.finecontrolapp.ui.main.data.model;
  */
 public class LoggedInUser {
 
-    private String userId;
+    private String email;
     private String displayName;
+    public boolean isLoggedIn;
 
-    public LoggedInUser(String userId, String displayName) {
-        this.userId = userId;
+    public LoggedInUser(String email, String displayName) {
+        this.email = email;
         this.displayName = displayName;
     }
 
+    public boolean isLoggedIn() {
+        return true;
+    }
+
     public String getUserId() {
-        return userId;
+        return email;
     }
 
     public String getDisplayName() {

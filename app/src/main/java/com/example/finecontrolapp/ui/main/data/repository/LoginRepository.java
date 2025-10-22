@@ -34,6 +34,8 @@ public class LoginRepository {
         return userDAO.getUserByEmail(email);
     }
 
+    public LiveData<String> getFirstName(String email) { return userDAO.getFirstName(email); }
+
     public LiveData<List<User>> getAllUsers() {
         return userDAO.getAllUsers();
     }
