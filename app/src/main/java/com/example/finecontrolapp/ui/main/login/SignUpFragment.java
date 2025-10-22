@@ -12,6 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavOptions;
 import androidx.navigation.fragment.NavHostFragment;
+
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,6 +66,13 @@ public class SignUpFragment extends Fragment {
                 if (fName.isEmpty() || lName.isEmpty() || email.isEmpty() ||
                         password.isEmpty() || phoneText.isEmpty()) {
                     Toast.makeText(getContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Validate email format
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    binding.txtEmail.setError("Please enter a valid email address");
+                    binding.txtEmail.requestFocus();
                     return;
                 }
 
