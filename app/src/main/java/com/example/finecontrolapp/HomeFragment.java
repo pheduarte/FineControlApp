@@ -14,12 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.finecontrolapp.databinding.FragmentHomeBinding;
 import com.example.finecontrolapp.ui.main.TransactionsViewModel;
 import com.example.finecontrolapp.ui.main.data.TransactionAdapter;
 import com.example.finecontrolapp.ui.main.login.MainActivityViewModel;
+import com.example.finecontrolapp.ui.main.profile.ProfileFragment;
 
 import java.util.Locale;
 

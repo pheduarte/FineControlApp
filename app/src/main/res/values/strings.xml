@@ -17,6 +17,10 @@
     <string name="hi_userName">Hi User!</string>
     <string name="total_balance_main_screen">$120</string>
     <string name="percentage_total_balance">% this month</string>
+    <string name="btnLogout">Logout</string>
+    <string name="btnClear_all_transactions">Clear all transactions</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 
 </resources>
