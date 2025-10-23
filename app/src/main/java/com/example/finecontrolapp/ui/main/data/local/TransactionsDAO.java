@@ -19,6 +19,12 @@ public interface TransactionsDAO {
     @Query("DELETE FROM transactions WHERE transactionId = :id")
     void deleteTransaction(int id);
 
+    @Query("SELECT SUM(CASE " +
+            " WHEN type = 'Expense' THEN -amount " +
+            " ELSE amount END) " +
+            " FROM transactions WHERE userEmail = :userEmail")
+    LiveData<Double> getTotalAmount(String userEmail);
+
     @Query("DELETE FROM transactions WHERE userEmail = :userEmail")
     void deleteAllTransactionsForUser(String userEmail);
 

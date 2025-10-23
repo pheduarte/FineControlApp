@@ -15,7 +15,8 @@
     <string name="textForgotPassword">Forgot Password?</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hi_userName">Hi User!</string>
-
+    <string name="total_balance_main_screen">$120</string>
+    <string name="percentage_total_balance">% this month</string>
 
 
 </resources>

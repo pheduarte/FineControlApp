@@ -14,10 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
 import com.example.finecontrolapp.databinding.FragmentHomeBinding;
 import com.example.finecontrolapp.ui.main.TransactionsViewModel;
 import com.example.finecontrolapp.ui.main.data.TransactionAdapter;
 import com.example.finecontrolapp.ui.main.login.MainActivityViewModel;
+
+import java.util.Locale;
 
 public class HomeFragment extends Fragment {
 
@@ -50,6 +54,7 @@ public class HomeFragment extends Fragment {
         SharedPreferences prefs = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
         String email = prefs.getString("logged_in_email", null);
 
+
         if (email != null) {
             // Fetch the first name from Room via ViewModel
             mainActivityViewModel.getFirstName(email).observe(getViewLifecycleOwner(), fName -> {
@@ -62,6 +67,14 @@ public class HomeFragment extends Fragment {
 
                 } else {
                     binding.hiUserName.setText(R.string.hi_userName);
+                }
+            });
+
+            mainActivityViewModel.getTotalAmount(email).observe(getViewLifecycleOwner(), amount -> {
+                if (amount != null) {
+                    binding.txtAmount.setText(String.format(Locale.getDefault(), "%.2f", amount));
+                } else {
+                    binding.txtAmount.setText("0.00");
                 }
             });
 

@@ -35,6 +35,7 @@ public class Transactions {
     public String date;
 
 
+
     public Transactions(String description, String type, double amount, String category, String date, String userEmail) {
 
         this.description = description;
