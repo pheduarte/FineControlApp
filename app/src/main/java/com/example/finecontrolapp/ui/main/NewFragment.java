@@ -50,6 +50,7 @@ public class NewFragment extends Fragment {
 
         final String[] type = {"Expense"};
         final String[] date = {""};
+        String totalBalance;
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 requireContext(),
@@ -175,6 +176,13 @@ public class NewFragment extends Fragment {
             ));
             unselectedBtn.setTextColor(getResources().getColor(android.R.color.black, null));
         }
+
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     @Override

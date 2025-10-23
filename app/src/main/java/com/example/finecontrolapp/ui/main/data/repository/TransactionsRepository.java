@@ -34,6 +34,11 @@ public class TransactionsRepository {
         executorService.execute(() -> transactionsDAO.deleteTransaction(id));
     }
 
+    public LiveData<Double> getTotalAmount(String email){
+        return transactionsDAO.getTotalAmount(email);
+    };
+
+
     public void deleteAllTransactionsForUser(String userEmail) {
         executorService.execute(() -> transactionsDAO.deleteAllTransactionsForUser(userEmail));
     }
