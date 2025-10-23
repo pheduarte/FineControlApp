@@ -21,4 +21,7 @@ public interface TransactionsDAO {
 
     @Query("DELETE FROM transactions WHERE userEmail = :userEmail")
     void deleteAllTransactionsForUser(String userEmail);
+
+    @Query("DELETE FROM transactions")
+    void deleteAll();
 }

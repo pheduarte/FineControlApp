@@ -37,4 +37,8 @@ public class TransactionsRepository {
     public void deleteAllTransactionsForUser(String userEmail) {
         executorService.execute(() -> transactionsDAO.deleteAllTransactionsForUser(userEmail));
     }
+
+    public void deleteAllTransactionsByUser(String email) {
+        AppDataBase.databaseWriteExecutor.execute(() -> transactionsDAO.deleteAllTransactionsForUser(email));
+    }
 }

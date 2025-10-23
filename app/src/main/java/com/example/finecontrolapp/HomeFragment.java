@@ -8,11 +8,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.finecontrolapp.databinding.FragmentHomeBinding;
+import com.example.finecontrolapp.ui.main.TransactionsViewModel;
+import com.example.finecontrolapp.ui.main.data.TransactionAdapter;
 import com.example.finecontrolapp.ui.main.login.MainActivityViewModel;
 
 public class HomeFragment extends Fragment {
@@ -68,6 +72,20 @@ public class HomeFragment extends Fragment {
                 transaction.addToBackStack(null);
                 transaction.commit();
             });
+        }
+
+        // Initialize RecyclerView and its adapter
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerTransactions);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        TransactionAdapter adapter = new TransactionAdapter();
+        recyclerView.setAdapter(adapter);
+
+        TransactionsViewModel viewModel = new ViewModelProvider(this).get(TransactionsViewModel.class);
+
+        // Retrieves and displays transactions for the logged in user
+        if (email != null) {
+            viewModel.getTransactionsByUser(email)
+                    .observe(getViewLifecycleOwner(), adapter::setTransactions);
         }
     }
 
