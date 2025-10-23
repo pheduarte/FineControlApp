@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.example.finecontrolapp.R;
@@ -49,6 +50,17 @@ public class NewFragment extends Fragment {
 
         final String[] type = {"Expense"};
         final String[] date = {""};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                requireContext(),
+                android.R.layout.simple_dropdown_item_1line,
+                new String[]{"Food", "Transport", "Shopping", "Bills", "Health", "Salary", "Other"}
+        );
+
+        binding.autoCompleteCategory.setAdapter(adapter);
+
+        // default value
+        binding.autoCompleteCategory.setText("Food", false);
 
 
         binding.btnNewExpense.setOnClickListener(v -> {
@@ -92,7 +104,7 @@ public class NewFragment extends Fragment {
 
             description = binding.newDescription.getText().toString();
             amount = binding.newAmount.getText().toString();
-            category = "Teste";
+            category = binding.autoCompleteCategory.getText().toString().trim();
 
             String transactionType = type[0];
             String transactionDate = date[0];
@@ -111,6 +123,7 @@ public class NewFragment extends Fragment {
                 Toast.makeText(getContext(), "Invalid amount", Toast.LENGTH_SHORT).show();
                 return;
             }
+
 
             binding.newDescription.setText("");
             binding.newAmount.setText("");

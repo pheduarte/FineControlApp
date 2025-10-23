@@ -133,7 +133,7 @@
         android:layout_marginTop="19dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/transaction_category_card"
         app:srcCompat="@drawable/card" />
@@ -142,7 +142,7 @@
         android:id="@+id/btnNewTransaction"
         android:layout_width="374dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="@color/primary"
         android:paddingHorizontal="130dp"
         android:paddingLeft="90dp"
@@ -154,7 +154,7 @@
         android:textColor="#FFFFFF"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/transaction_description_card" />
 
@@ -171,7 +171,7 @@
     <ImageView
         android:id="@+id/transaction_category_card"
         android:layout_width="374dp"
-        android:layout_height="85dp"
+        android:layout_height="95dp"
         android:layout_marginTop="19dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
@@ -190,28 +190,65 @@
         app:layout_constraintStart_toStartOf="@+id/transaction_category_card"
         app:layout_constraintTop_toTopOf="@+id/transaction_category_card" />
 
-    <AutoCompleteTextView
-        android:id="@+id/dropdown_category_list"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginHorizontal="20dp"
-        android:text="AutoCompleteTextView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView7"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/imageView7"
-        app:layout_constraintTop_toTopOf="@+id/transaction_category_card" />
 
-    <ImageView
-        android:id="@+id/imageView17"
-        android:layout_width="320dp"
+    <FrameLayout
+        android:id="@+id/dropdownContainer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="@+id/transaction_category_card"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="33dp"
+        android:elevation="4dp"
+        android:translationZ="2dp"
         app:layout_constraintStart_toStartOf="@+id/transaction_category_card"
-        app:layout_constraintTop_toTopOf="@+id/transaction_category_card"
-        app:srcCompat="@drawable/textfield" />
+        app:layout_constraintTop_toTopOf="@+id/transaction_category_card">
+
+        <!-- Your custom image background -->
+        <ImageView
+            android:id="@+id/imgDropdownBg"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:contentDescription="category_background"
+            android:scaleType="fitXY"
+            android:src="@drawable/textfield"
+            tools:layout_editor_absoluteX="31dp"
+            tools:layout_editor_absoluteY="507dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dropdownCategoryLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:elevation="8dp"
+            android:translationZ="8dp"
+            android:background="@android:color/transparent"
+            app:endIconMode="dropdown_menu">
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:clickable="true"
+                android:focusable="true"
+                android:inputType="none"
+                android:paddingStart="16dp"
+                android:paddingEnd="40dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Secondary" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </FrameLayout>
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView17"-->
+<!--        android:layout_width="320dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="36dp"-->
+<!--        android:scaleType="fitXY"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/transaction_category_card"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/transaction_category_card"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/transaction_category_card"-->
+<!--        app:srcCompat="@drawable/textfield" />-->
 
     <TextView
         android:id="@+id/textDescription"
