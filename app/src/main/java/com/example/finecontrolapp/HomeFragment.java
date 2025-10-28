@@ -70,6 +70,7 @@ public class HomeFragment extends Fragment {
                 }
             });
 
+            // Fetch the total amount from Room via ViewModel
             mainActivityViewModel.getTotalAmount(email).observe(getViewLifecycleOwner(), amount -> {
                 if (amount != null) {
                     binding.txtAmount.setText(String.format(Locale.getDefault(), "%.2f", amount));
@@ -97,8 +98,16 @@ public class HomeFragment extends Fragment {
 
         // Retrieves and displays transactions for the logged in user
         if (email != null) {
-            viewModel.getTransactionsByUser(email)
-                    .observe(getViewLifecycleOwner(), adapter::setTransactions);
+            viewModel.getTransactionsByUser(email).observe(getViewLifecycleOwner(), transactions -> {
+                if (transactions == null || transactions.isEmpty()) {
+                    binding.recyclerTransactions.setVisibility(View.GONE);
+                    binding.textEmptyList.setVisibility(View.VISIBLE);
+                } else {
+                    binding.recyclerTransactions.setVisibility(View.VISIBLE);
+                    binding.textEmptyList.setVisibility(View.GONE);
+                    adapter.setTransactions(transactions);
+                }
+            });
         }
     }
 
