@@ -11,7 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:menu="@menu/bottom_nav_menu" />
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@color/primary"
+        app:itemTextColor="@color/primary"
+        android:background="?android:attr/windowBackground"/>
 
     <!-- NavHostFragment to manage main navigation -->
     <androidx.fragment.app.FragmentContainerView

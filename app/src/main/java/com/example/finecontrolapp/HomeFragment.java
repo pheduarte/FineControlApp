@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.finecontrolapp.databinding.FragmentHomeBinding;
+import com.example.finecontrolapp.ui.main.TransactionsFragment;
 import com.example.finecontrolapp.ui.main.TransactionsViewModel;
 import com.example.finecontrolapp.ui.main.data.TransactionAdapter;
 import com.example.finecontrolapp.ui.main.login.MainActivityViewModel;
@@ -54,6 +56,11 @@ public class HomeFragment extends Fragment {
         SharedPreferences prefs = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
         String email = prefs.getString("logged_in_email", null);
 
+        binding.fabAction.setOnClickListener(v -> {
+            NavHostFragment.findNavController(HomeFragment.this)
+                    .navigate(R.id.action_homeFragment_to_newFragment);
+        });
+
 
         if (email != null) {
             // Fetch the first name from Room via ViewModel
@@ -81,10 +88,8 @@ public class HomeFragment extends Fragment {
 
             // Set click listener for profile icon and navigate to Profile Screen
             binding.profileIconHeader.setOnClickListener(v -> {
-                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-                transaction.replace(R.id.containerMain, new ProfileFragment());
-                transaction.addToBackStack(null);
-                transaction.commit();
+                NavHostFragment.findNavController(HomeFragment.this)
+                        .navigate(R.id.action_homeFragment_to_profileFragment);
             });
         }
 
@@ -118,3 +123,4 @@ public class HomeFragment extends Fragment {
         binding = null;
     }
 }
+

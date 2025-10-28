@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -71,4 +72,6 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:2.8.2")
 
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.3")
+    implementation("com.google.firebase:firebase-auth:23.0.0")
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
 }

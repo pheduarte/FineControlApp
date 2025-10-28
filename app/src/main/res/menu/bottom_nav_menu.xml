@@ -10,10 +10,10 @@
         android:title="Transactions"
         android:icon="@drawable/icon_list" />
 
-    <item
-        android:id="@+id/newFragment"
-        android:title="New"
-        android:icon="@drawable/btn_add_new" />
+<!--    <item-->
+<!--        android:id="@+id/newFragment"-->
+<!--        android:title="New"-->
+<!--        android:icon="@drawable/btn_floating_plus" />-->
 
     <item
         android:id="@+id/budgetFragment"

@@ -22,6 +22,10 @@ import com.example.finecontrolapp.databinding.FragmentProfileBinding;
 import com.example.finecontrolapp.ui.main.TransactionsViewModel;
 import com.example.finecontrolapp.ui.main.data.TransactionAdapter;
 import com.example.finecontrolapp.ui.main.login.LoginScreen;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,6 +78,17 @@ public class ProfileFragment extends Fragment {
         // Logs user out and clears shared preferences
         binding.btnLogout.setOnClickListener( v -> {
 
+            // Sign out from Firebase
+            FirebaseAuth.getInstance().signOut();
+
+            // Also sign out from Google
+            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken(getString(R.string.default_web_client_id))
+                    .requestEmail()
+                    .build();
+            GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(requireContext(), gso);
+            googleSignInClient.signOut();
+
             SharedPreferences prefs = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
             prefs.edit().clear().apply();
 
@@ -84,28 +99,29 @@ public class ProfileFragment extends Fragment {
             requireActivity().finish();
         });
 
+        //
+        assert binding.recyclerSettings != null;
+        binding.recyclerSettings.setLayoutManager(new LinearLayoutManager(getContext()));
 
-            binding.recyclerSettings.setLayoutManager(new LinearLayoutManager(getContext()));
-
-            List<SettingItem> settings = new ArrayList<>();
+        List<SettingItem> settings = new ArrayList<>();
 
         settings.add(new SettingItem(
-                R.drawable.icon_home, "Account settings", "Manage your account preferences",
+                R.drawable.icon_setting, "Account settings", "Manage your account preferences",
                 () -> NavHostFragment.findNavController(this).navigate(R.id.action_profileFragment_to_accountSettingsFragment)
         ));
 
         settings.add(new SettingItem(
-                R.drawable.icon_home, "Notifications", "Configure notifications settings",
+                R.drawable.icon_notifications, "Notifications", "Configure notifications settings",
                 () -> NavHostFragment.findNavController(this).navigate(R.id.action_profileFragment_to_notificationsFragment)
         ));
 
         settings.add(new SettingItem(
-                R.drawable.icon_home, "Privacy & security", "Manage your privacy and security settings",
+                R.drawable.icon_secure, "Privacy & security", "Manage your privacy and security settings",
                 () -> NavHostFragment.findNavController(this).navigate(R.id.action_profileFragment_to_privacySecurityFragment)
         ));
 
         settings.add(new SettingItem(
-                R.drawable.icon_home, "Help & support", "Get help and support",
+                R.drawable.icon_support, "Help & support", "Get help and support",
                 () -> NavHostFragment.findNavController(this).navigate(R.id.action_profileFragment_to_helpSupportFragment)
         ));
 
