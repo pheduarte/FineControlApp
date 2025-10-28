@@ -8,7 +8,10 @@ import androidx.lifecycle.LiveData;
 import com.example.finecontrolapp.ui.main.data.Transactions;
 import com.example.finecontrolapp.ui.main.data.repository.TransactionsRepository;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class TransactionsViewModel extends AndroidViewModel {
 
@@ -34,4 +37,16 @@ public class TransactionsViewModel extends AndroidViewModel {
     public void deleteAllByUser(String email) {
         repository.deleteAllTransactionsByUser(email);
     }
+
+    public LiveData<Double> getMonthlyTotal(String userEmail, Calendar calendar) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM", Locale.getDefault());
+        String monthYear = format.format(calendar.getTime());
+        return repository.getMonthlyTotal(userEmail, monthYear);
+    };
+
+    public LiveData<Double> getMonthlyByCategory(String userEmail, Calendar calendar, String category) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM", Locale.getDefault());
+        String monthYear = format.format(calendar.getTime());
+        return repository.getMonthlyByCategory(userEmail, monthYear, category);
+    };
 }

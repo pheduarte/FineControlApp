@@ -50,7 +50,14 @@ public class NewFragment extends Fragment {
 
         final String[] type = {"Expense"};
         final String[] date = {""};
-        String totalBalance;
+        Calendar today = Calendar.getInstance();
+        String isoToday = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault())
+                .format(today.getTime());
+        String displayToday = new java.text.SimpleDateFormat("dd/MM/yyyy", java.util.Locale.getDefault())
+                .format(today.getTime());
+
+        binding.tvSelectedDate.setText(displayToday);
+        date[0] = isoToday;
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 requireContext(),
@@ -61,7 +68,7 @@ public class NewFragment extends Fragment {
         binding.autoCompleteCategory.setAdapter(adapter);
 
         // default value
-        binding.autoCompleteCategory.setText("Food", false);
+        binding.autoCompleteCategory.setHint("Select");
 
 
         binding.btnNewExpense.setOnClickListener(v -> {
@@ -83,11 +90,13 @@ public class NewFragment extends Fragment {
             DatePickerDialog datePickerDialog = new DatePickerDialog(
                     getContext(),
                     (datePickerView, selectedYear, selectedMonth, selectedDay) -> {
+
                         // Month is 0-based, so add +1
-                        String selectedDate = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
+                        String selectedDate = selectedYear + "-" + (selectedMonth + 1) + "-" + selectedDay; //For DB only
+                        String formattedDate = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear; //User friendly
 
                         // Display it
-                        binding.tvSelectedDate.setText(selectedDate);
+                        binding.tvSelectedDate.setText(formattedDate);
 
                         date[0] = selectedDate;
                     },
@@ -128,7 +137,10 @@ public class NewFragment extends Fragment {
 
             binding.newDescription.setText("");
             binding.newAmount.setText("");
-            binding.tvSelectedDate.setText("");
+            binding.autoCompleteCategory.setText("");
+            binding.tvSelectedDate.setText(displayToday);
+            date[0] = isoToday;
+
             highlightSelectedButton(binding.btnNewExpense, binding.btnNewIncome);
 
             Toast.makeText(getContext(), "Transaction added", Toast.LENGTH_SHORT).show();

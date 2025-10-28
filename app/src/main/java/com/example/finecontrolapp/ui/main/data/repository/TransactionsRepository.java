@@ -38,7 +38,6 @@ public class TransactionsRepository {
         return transactionsDAO.getTotalAmount(email);
     };
 
-
     public void deleteAllTransactionsForUser(String userEmail) {
         executorService.execute(() -> transactionsDAO.deleteAllTransactionsForUser(userEmail));
     }
@@ -46,4 +45,13 @@ public class TransactionsRepository {
     public void deleteAllTransactionsByUser(String email) {
         AppDataBase.databaseWriteExecutor.execute(() -> transactionsDAO.deleteAllTransactionsForUser(email));
     }
+
+    public LiveData<Double> getMonthlyTotal(String userEmail, String monthYear) {
+        return transactionsDAO.getMonthlyTotal(userEmail, monthYear);
+    }
+
+    public LiveData<Double> getMonthlyByCategory(String userEmail, String monthYear, String category) {
+        return transactionsDAO.getMonthlyByCategory(userEmail, monthYear, category);
+    }
+
 }

@@ -53,4 +53,15 @@ public class BudgetAdapter extends RecyclerView.Adapter<BudgetAdapter.ViewHolder
             txtAmount = itemView.findViewById(R.id.txtAmount);
         }
     }
+
+    public void updateAmountForCategory(String category, String newAmount) {
+        for (BudgetItem item : budgetList) {
+            if (item.getTitle().equalsIgnoreCase(category)) {
+                int index = budgetList.indexOf(item);
+                budgetList.set(index, new BudgetItem(item.getIconRes(), item.getTitle(), newAmount));
+                notifyItemChanged(index);
+                break;
+            }
+        }
+    }
 }

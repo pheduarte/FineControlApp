@@ -51,11 +51,20 @@ public class  TransactionsFragment extends Fragment {
         SharedPreferences prefs = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
         String email = prefs.getString("logged_in_email", null);
 
-        // Retrieves and displays transactions for the logged in user
+         //Retrieves and displays transactions for the logged in user
         if (email != null) {
-            viewModel.getTransactionsByUser(email)
-                    .observe(getViewLifecycleOwner(), adapter::setTransactions);
+            viewModel.getTransactionsByUser(email).observe(getViewLifecycleOwner(), transactions -> {
+                if (transactions == null || transactions.isEmpty()) {
+                    binding.recyclerTransactions.setVisibility(View.GONE);
+                    binding.tvEmptyList.setVisibility(View.VISIBLE);
+                } else {
+                    binding.recyclerTransactions.setVisibility(View.VISIBLE);
+                    binding.tvEmptyList.setVisibility(View.GONE);
+                    adapter.setTransactions(transactions);
+                }
+            });
         }
+
 
     }
 

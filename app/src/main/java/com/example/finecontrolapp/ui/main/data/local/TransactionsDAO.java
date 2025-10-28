@@ -13,7 +13,7 @@ public interface TransactionsDAO {
     @Insert
     void insert(Transactions transaction);
 
-    @Query("SELECT * FROM transactions WHERE userEmail = :userEmail ORDER BY date DESC")
+    @Query("SELECT * FROM transactions WHERE userEmail = :userEmail ORDER BY date")
     LiveData<List<Transactions>> getTransactionsByUser(String userEmail);
 
     @Query("DELETE FROM transactions WHERE transactionId = :id")
@@ -30,4 +30,18 @@ public interface TransactionsDAO {
 
     @Query("DELETE FROM transactions")
     void deleteAll();
+
+    @Query("SELECT SUM(CASE WHEN type = 'Expense' THEN -amount ELSE amount END) " +
+            "FROM transactions " +
+            "WHERE userEmail = :userEmail " +
+            "AND strftime('%Y-%m', date) = :monthYear")
+    LiveData<Double> getMonthlyTotal(String userEmail, String monthYear);
+
+    @Query("SELECT SUM(CASE WHEN type = 'Expense' THEN -amount ELSE amount END) " +
+            "FROM transactions " +
+            "WHERE userEmail = :userEmail " +
+            "AND category = :category " +
+            "AND strftime('%Y-%m', date) = :monthYear")
+    LiveData<Double> getMonthlyByCategory(String userEmail, String monthYear, String category);
+
 }
