@@ -70,6 +70,7 @@ public class HomeFragment extends Fragment {
                 }
             });
 
+            // Fetch the total amount from Room via ViewModel
             mainActivityViewModel.getTotalAmount(email).observe(getViewLifecycleOwner(), amount -> {
                 if (amount != null) {
                     binding.txtAmount.setText(String.format(Locale.getDefault(), "%.2f", amount));

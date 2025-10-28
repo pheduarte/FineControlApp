@@ -55,7 +55,7 @@ public class NewFragment extends Fragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 requireContext(),
                 android.R.layout.simple_dropdown_item_1line,
-                new String[]{"Food", "Transport", "Shopping", "Bills", "Health", "Salary", "Other"}
+                new String[]{"Food", "Transport", "Shopping","House", "Subscription", "Bills", "Health", "Salary", "Transfer", "Other"}
         );
 
         binding.autoCompleteCategory.setAdapter(adapter);

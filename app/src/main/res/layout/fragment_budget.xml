@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:text="Budget Overview"
+        android:text="Spending Overview"
         android:textColor="#101828"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -58,18 +58,7 @@
         app:layout_constraintTop_toBottomOf="@+id/header_card"
         app:srcCompat="@drawable/card" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="36dp"
-        android:text="Monthly budget"
-        android:textColor="#101828"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/card_budget_usage"
-        app:layout_constraintTop_toTopOf="@+id/card_budget_usage" />
+
 
     <TextView
         android:id="@+id/textView16"
@@ -77,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="36dp"
-        android:text="Monthly budget"
+        android:text="Monthly spent"
         android:textColor="#101828"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -93,58 +82,21 @@
         android:textColor="#A0101828"
         android:textSize="16sp"
         android:textStyle="normal"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView9"
-        app:layout_constraintStart_toEndOf="@+id/textView9" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView16"
+        app:layout_constraintStart_toEndOf="@+id/textView16" />
 
     <TextView
         android:id="@+id/remaining_budget_percentage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="44dp"
         android:text="100%"
         android:textColor="#101828"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@+id/used_budget_percentage"
-        app:layout_constraintStart_toStartOf="@+id/card_budget_usage" />
-
-    <TextView
-        android:id="@+id/lable_remaning_budget"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="20dp"
-        android:text="Remaining"
-        android:textColor="#A0101828"
-        android:textSize="16sp"
-        android:textStyle="normal"
         app:layout_constraintStart_toStartOf="@+id/card_budget_usage"
-        app:layout_constraintTop_toBottomOf="@+id/remaining_budget_percentage" />
-
-    <TextView
-        android:id="@+id/used_budget_percentage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="56dp"
-        android:text="0%"
-        android:textColor="#101828"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/card_budget_usage"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="52dp"
-        android:text="Used"
-        android:textColor="#A0101828"
-        android:textSize="16sp"
-        android:textStyle="normal"
-        app:layout_constraintBaseline_toBaselineOf="@+id/lable_remaning_budget"
-        app:layout_constraintEnd_toEndOf="@+id/card_budget_usage" />
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
     <ImageView
         android:id="@+id/card_budget"
@@ -162,12 +114,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="36dp"
-        android:text="Budget by category"
+        android:layout_marginTop="20dp"
+        android:text="Spending by category"
         android:textColor="#101828"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/card_budget"
         app:layout_constraintTop_toTopOf="@+id/card_budget" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_budget_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="3dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/card_budget"
+        app:layout_constraintEnd_toEndOf="@+id/card_budget"
+        app:layout_constraintStart_toStartOf="@+id/card_budget"
+        app:layout_constraintTop_toBottomOf="@+id/lable_budget_by_category" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
