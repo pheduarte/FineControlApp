@@ -6,6 +6,8 @@ import androidx.lifecycle.LiveData;
 
 import com.example.finecontrolapp.data.local.AppDataBase;
 import com.example.finecontrolapp.data.local.UserDAO;
+import com.example.finecontrolapp.data.local.TransactionsDAO;
+
 import com.example.finecontrolapp.data.User;
 
 import android.os.Looper;
@@ -20,6 +22,8 @@ import android.os.Handler;
 public class LoginRepository {
 
     private final UserDAO userDAO;
+    private TransactionsDAO transactionsDAO;
+
     private final ExecutorService executorService;
 
     public LoginRepository(Application application) {
@@ -51,5 +55,10 @@ public class LoginRepository {
         });
     }
 
-
+    public void deleteUser(String email, Runnable onComplete) {
+        executorService.execute(() -> {
+            userDAO.deleteUser(email);
+            new Handler(Looper.getMainLooper()).post(onComplete);
+        });
+    }
 }

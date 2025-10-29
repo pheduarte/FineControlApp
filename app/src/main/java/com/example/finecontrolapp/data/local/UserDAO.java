@@ -26,4 +26,7 @@ public interface UserDAO {
 
     @Query("SELECT fName FROM users WHERE email = :email LIMIT 1")
     LiveData<String> getFirstName(String email);
+
+    @Query("DELETE FROM users WHERE email = :email")
+    void deleteUser(String email);
 }
