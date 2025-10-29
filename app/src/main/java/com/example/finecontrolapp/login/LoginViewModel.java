@@ -42,6 +42,10 @@ public class LoginViewModel extends AndroidViewModel {
         repository.verifyCredentials(email, password, callback);
     }
 
+    public void deleteUser(String email, Runnable onComplete) {
+        repository.deleteUser(email, onComplete);
+    }
+
 }
 
 
