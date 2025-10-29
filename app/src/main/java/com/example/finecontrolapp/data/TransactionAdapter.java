@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finecontrolapp.R;
@@ -28,9 +29,23 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
     @Override
     public void onBindViewHolder(@NonNull TransactionViewHolder holder, int position) {
         Transactions transaction = transactionList.get(position);
+
+        Double amount = transaction.amount;
+        String formattedAmount = String.format("%.2f", Math.abs(amount));
+
+        if ("income".equalsIgnoreCase(transaction.type)) {
+            holder.txtAmount.setText(String.format("$%s", formattedAmount));
+            holder.txtAmount.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.greenIncome));
+        } else if ("expense".equalsIgnoreCase(transaction.type)) {
+            holder.txtAmount.setText(String.format("-$%s", formattedAmount));
+            holder.txtAmount.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.redExpense));
+        } else {
+            holder.txtAmount.setText(String.format("$%s", formattedAmount));
+            holder.txtAmount.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.black_overlay));
+        }
+
         holder.txtCategory.setText(transaction.category);
         holder.txtDescription.setText(transaction.description);
-        holder.txtAmount.setText("$" + transaction.amount);
         holder.txtDate.setText(transaction.date);
     }
 

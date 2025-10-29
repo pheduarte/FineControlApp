@@ -7,12 +7,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finecontrolapp.R;
 import com.example.finecontrolapp.data.BudgetItem;
 
 import java.util.List;
+import java.util.Locale;
 
 public class BudgetAdapter extends RecyclerView.Adapter<BudgetAdapter.ViewHolder> {
 
@@ -39,7 +41,29 @@ public class BudgetAdapter extends RecyclerView.Adapter<BudgetAdapter.ViewHolder
         BudgetItem item = budgetList.get(position);
         holder.txtCategory.setText(item.getTitle());
         holder.img_icon_budget.setImageResource(item.getIconRes());
-        holder.txtAmount.setText(item.getAmount());
+
+        // Parse amount safely
+        double amount = 0.0;
+        try {
+            amount = Double.parseDouble(item.getAmount().replace("$", "").trim());
+        } catch (NumberFormatException ignored) {}
+
+        // Format value with sign and color
+        String formattedAmount = String.format(Locale.getDefault(), "%.2f", Math.abs(amount));
+
+        if (amount > 0) {
+            // Positive = green and plus sign
+            holder.txtAmount.setText(String.format("$%s", formattedAmount));
+            holder.txtAmount.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.greenIncome));
+        } else if (amount < 0) {
+            // Negative = red and minus sign
+            holder.txtAmount.setText(String.format("-$%s", formattedAmount));
+            holder.txtAmount.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.redExpense));
+        } else {
+            // Zero = neutral
+            holder.txtAmount.setText("$0.00");
+            holder.txtAmount.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.black_overlay));
+        }
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
