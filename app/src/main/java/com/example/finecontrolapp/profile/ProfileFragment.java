@@ -64,7 +64,7 @@ public class ProfileFragment extends Fragment {
                     .setPositiveButton("Yes", (dialog, which) -> {
 
                         // For current user
-                        viewModel.deleteAllByUser(email);
+                        viewModel.deleteAllTransactionsByUser(email);
 
                         Toast.makeText(getContext(), "All transactions deleted.", Toast.LENGTH_SHORT).show();
                     })

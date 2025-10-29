@@ -31,9 +31,10 @@ public interface TransactionsDAO {
     @Query("DELETE FROM transactions")
     void deleteAll();
 
-    @Query("SELECT SUM(CASE WHEN type = 'Expense' THEN -amount ELSE amount END) " +
+    @Query("SELECT SUM(amount) " +
             "FROM transactions " +
             "WHERE userEmail = :userEmail " +
+            "AND type = 'Expense' " +
             "AND strftime('%Y-%m', date) = :monthYear")
     LiveData<Double> getMonthlyTotal(String userEmail, String monthYear);
 
@@ -43,5 +44,8 @@ public interface TransactionsDAO {
             "AND category = :category " +
             "AND strftime('%Y-%m', date) = :monthYear")
     LiveData<Double> getMonthlyByCategory(String userEmail, String monthYear, String category);
+
+    @Query("SELECT COUNT(*) FROM transactions WHERE userEmail = :userEmail")
+    LiveData<Integer> getCount(String userEmail);
 
 }

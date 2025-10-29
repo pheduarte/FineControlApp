@@ -23,17 +23,15 @@
         app:iconGravity="start"
         app:iconPadding="8dp"
         app:iconTint="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.945"
+        app:layout_constraintHorizontal_bias="0.934"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"
-        app:layout_constraintVertical_bias="0.063" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
     <ImageView
         android:id="@+id/header"
         android:layout_width="0dp"
-        android:layout_height="110dp"
+        android:layout_height="120dp"
         android:scaleType="centerCrop"
         android:src="@drawable/background_header"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,20 +68,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="44dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:src="@drawable/avatar"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton3"
+        app:layout_constraintStart_toEndOf="@+id/hiUserName"
         app:layout_constraintTop_toTopOf="@+id/header" />
 
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_height="337dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:scaleType="fitXY"
+        android:layout_marginHorizontal="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,12 +92,12 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:text="All transactions"
         android:textColor="#101828"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textStyle="normal"
         app:layout_constraintStart_toStartOf="@+id/imageView6"
         app:layout_constraintTop_toTopOf="@+id/imageView6" />
 
@@ -131,10 +129,8 @@
     <ImageView
         android:id="@+id/total_balance_card"
         android:layout_width="wrap_content"
-        android:layout_height="90dp"
-        android:layout_marginStart="20dp"
+        android:layout_height="100dp"
         android:layout_marginTop="19dp"
-        android:layout_marginEnd="20dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -145,37 +141,30 @@
         android:id="@+id/txtCategory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="16dp"
         android:text="Total balance"
         android:textColor="@color/black"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/txtAmount"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/total_balance_card"
+        app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintStart_toStartOf="@+id/total_balance_card"
         app:layout_constraintTop_toTopOf="@+id/total_balance_card" />
 
     <TextView
         android:id="@+id/txtAmount"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="148dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="2dp"
         android:text="@string/total_balance_main_screen"
         android:textColor="@color/black"
         android:textSize="32sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/total_balance_card"
         app:layout_constraintEnd_toEndOf="@+id/total_balance_card"
-        app:layout_constraintTop_toTopOf="@+id/total_balance_card" />
-
-    <TextView
-        android:id="@+id/txtDescription"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="@string/percentage_total_balance"
-        android:textColor="@color/neutralGray"
-        app:layout_constraintEnd_toStartOf="@+id/txtAmount"
         app:layout_constraintStart_toStartOf="@+id/total_balance_card"
         app:layout_constraintTop_toBottomOf="@+id/txtCategory" />
 

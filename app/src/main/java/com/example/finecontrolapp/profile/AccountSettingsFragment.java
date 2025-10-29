@@ -108,7 +108,7 @@ public class AccountSettingsFragment extends Fragment {
                         if (currentUser != null) {
                             currentUser.delete().addOnCompleteListener(task -> {
                                 if (task.isSuccessful()) {
-                                    transactionsViewModel.deleteAllByUser(email);
+                                    transactionsViewModel.deleteAllTransactionsByUser(email);
                                     loginViewModel.deleteUser(email, () -> {
                                         hideProgressSheet();
 

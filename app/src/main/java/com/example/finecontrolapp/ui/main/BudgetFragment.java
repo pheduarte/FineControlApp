@@ -75,14 +75,16 @@ public class BudgetFragment extends Fragment {
 
         viewModel.getMonthlyTotal(email, currentMonth)
                 .observe(getViewLifecycleOwner(), total -> {
-                    if (total == null) {
-                        total = 0.0;
-                        binding.totalSpent.setText(String.format(Locale.getDefault(), "$%.2f", total));
+                    if (total == null) total = 0.0;
+
+                    String formattedTotal = String.format(Locale.getDefault(), "$%.2f", Math.abs(total));
+
+                    if (total == 0) {
+                        binding.totalSpent.setText(formattedTotal);
                         binding.totalSpent.setTextColor(ContextCompat.getColor(requireContext(), R.color.black_overlay));
-                    } else {
-                        binding.totalSpent.setText(String.format(Locale.getDefault(), "-$%.2f", (total*-1)));
-                        binding.totalSpent.setTextColor(ContextCompat.getColor(requireContext(), R.color.redExpense));
-                    }
+                } else {
+                        binding.totalSpent.setText(String.format("-" + formattedTotal));
+                        binding.totalSpent.setTextColor(ContextCompat.getColor(requireContext(), R.color.redExpense));}
                 });
 
         for (BudgetItem item : budgetList) {
@@ -90,14 +92,8 @@ public class BudgetFragment extends Fragment {
 
             viewModel.getMonthlyByCategory(email, currentMonth, category)
                     .observe(getViewLifecycleOwner(), total -> {
-                        if (total == null) total = (0.0*-1);
+                        if (total == null) total = 0.0;
                         adapter.updateAmountForCategory(category, String.format(Locale.getDefault(), "$%.2f", total));
-
-                        if (category.equals("Salary") || category.equals("Transfer")) {
-                            adapter.updateAmountForCategory(category, String.format(Locale.getDefault(), "$%.2f", total));
-                        } else {
-                            adapter.updateAmountForCategory(category, String.format(Locale.getDefault(), "-$%.2f", (total*-1)));
-                        }
                     });
         }
     }
