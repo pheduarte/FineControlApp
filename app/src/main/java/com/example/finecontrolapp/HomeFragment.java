@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
@@ -77,11 +78,28 @@ public class HomeFragment extends Fragment {
             // Fetch the total amount from Room via ViewModel
             mainActivityViewModel.getTotalAmount(email).observe(getViewLifecycleOwner(), amount -> {
                 if (amount != null) {
-                    binding.txtAmount.setText(String.format(Locale.getDefault(), "%.2f", amount));
+                    // Format value with sign
+                    String formattedAmount = String.format(Locale.getDefault(), "%.2f", Math.abs(amount));
+
+                    if (amount > 0) {
+
+                        binding.txtAmount.setText(String.format("$%s", formattedAmount));
+                        binding.txtAmount.setTextColor(ContextCompat.getColor(requireContext(), R.color.greenIncome));
+                    } else if (amount < 0) {
+
+                        binding.txtAmount.setText(String.format("-$%s", formattedAmount));
+                        binding.txtAmount.setTextColor(ContextCompat.getColor(requireContext(), R.color.redExpense));
+                    } else {
+                        // Zero balance → neutral
+                        binding.txtAmount.setText("0.00");
+                        binding.txtAmount.setTextColor(ContextCompat.getColor(requireContext(), R.color.black_overlay)); // optional
+                    }
                 } else {
                     binding.txtAmount.setText("0.00");
+                    binding.txtAmount.setTextColor(ContextCompat.getColor(requireContext(), R.color.black_overlay)); // optional
                 }
             });
+
 
             // Set click listener for profile icon and navigate to Profile Screen
             binding.profileIconHeader.setOnClickListener(v -> {

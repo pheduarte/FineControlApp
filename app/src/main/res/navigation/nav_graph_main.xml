@@ -59,7 +59,11 @@
         android:id="@+id/newFragment"
         android:name="com.example.finecontrolapp.ui.main.NewFragment"
         android:label="New"
-        tools:layout="@layout/fragment_new" />
+        tools:layout="@layout/fragment_new" >
+        <action
+            android:id="@+id/action_newFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/accountSettingsFragment"
         android:name="com.example.finecontrolapp.profile.AccountSettingsFragment"

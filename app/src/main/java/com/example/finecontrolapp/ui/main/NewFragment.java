@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -143,6 +144,17 @@ public class NewFragment extends Fragment {
             highlightSelectedButton(binding.btnNewExpense, binding.btnNewIncome);
 
             Toast.makeText(getContext(), "Transaction added", Toast.LENGTH_SHORT).show();
+        });
+
+        binding.btnCancelTransaction.setOnClickListener( v -> {
+            binding.newDescription.setText("");
+            binding.newAmount.setText("");
+            binding.autoCompleteCategory.setText("");
+            binding.tvSelectedDate.setText(displayToday);
+            date[0] = isoToday;
+
+            NavHostFragment.findNavController(NewFragment.this)
+                    .navigate(R.id.action_newFragment_to_homeFragment);
         });
 
     }
