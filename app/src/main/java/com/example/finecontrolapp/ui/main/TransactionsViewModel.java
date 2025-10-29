@@ -34,7 +34,7 @@ public class TransactionsViewModel extends AndroidViewModel {
         repository.deleteTransactions(id);
     }
 
-    public void deleteAllByUser(String email) {
+    public void deleteAllTransactionsByUser(String email) {
         repository.deleteAllTransactionsByUser(email);
     }
 

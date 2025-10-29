@@ -77,29 +77,21 @@ public class HomeFragment extends Fragment {
 
             // Fetch the total amount from Room via ViewModel
             mainActivityViewModel.getTotalAmount(email).observe(getViewLifecycleOwner(), amount -> {
-                if (amount != null) {
-                    // Format value with sign
-                    String formattedAmount = String.format(Locale.getDefault(), "%.2f", Math.abs(amount));
+                if (amount == null || amount == 0.0) amount = 0.0;
 
-                    if (amount > 0) {
+                String formattedTotal = String.format(Locale.getDefault(), "$%.2f", Math.abs(amount));
+                binding.txtAmount.setTextColor(ContextCompat.getColor(requireContext(), R.color.black_overlay));
 
-                        binding.txtAmount.setText(String.format("$%s", formattedAmount));
-                        binding.txtAmount.setTextColor(ContextCompat.getColor(requireContext(), R.color.greenIncome));
-                    } else if (amount < 0) {
-
-                        binding.txtAmount.setText(String.format("-$%s", formattedAmount));
-                        binding.txtAmount.setTextColor(ContextCompat.getColor(requireContext(), R.color.redExpense));
-                    } else {
-                        // Zero balance → neutral
-                        binding.txtAmount.setText("0.00");
-                        binding.txtAmount.setTextColor(ContextCompat.getColor(requireContext(), R.color.black_overlay)); // optional
-                    }
+                if (amount > 0) {
+                    binding.txtAmount.setText(formattedTotal);
+                    binding.txtAmount.setTextColor(ContextCompat.getColor(requireContext(), R.color.greenIncome));
+                } else if (amount < 0) {
+                    binding.txtAmount.setText("-" + formattedTotal);
+                    binding.txtAmount.setTextColor(ContextCompat.getColor(requireContext(), R.color.redExpense));
                 } else {
-                    binding.txtAmount.setText("0.00");
-                    binding.txtAmount.setTextColor(ContextCompat.getColor(requireContext(), R.color.black_overlay)); // optional
+                    binding.txtAmount.setTextColor(ContextCompat.getColor(requireContext(), R.color.black_overlay));
                 }
             });
-
 
             // Set click listener for profile icon and navigate to Profile Screen
             binding.profileIconHeader.setOnClickListener(v -> {
