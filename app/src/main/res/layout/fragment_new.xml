@@ -10,7 +10,7 @@
         android:id="@+id/header_card"
         android:layout_width="374dp"
         android:layout_height="100dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="40dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
@@ -50,12 +50,12 @@
         android:id="@+id/transaction_selector_card"
         android:layout_width="374dp"
         android:layout_height="80dp"
-        android:layout_marginTop="208dp"
+        android:layout_marginTop="24dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_card"
         app:srcCompat="@drawable/card" />
 
     <com.google.android.material.button.MaterialButton
