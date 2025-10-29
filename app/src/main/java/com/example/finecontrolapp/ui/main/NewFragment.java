@@ -17,9 +17,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.example.finecontrolapp.R;
-import com.example.finecontrolapp.databinding.FragmentHomeBinding;
 import com.example.finecontrolapp.databinding.FragmentNewBinding;
-import com.example.finecontrolapp.ui.main.data.Transactions;
+import com.example.finecontrolapp.data.Transactions;
 
 import java.util.Calendar;
 

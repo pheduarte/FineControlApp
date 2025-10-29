@@ -17,8 +17,7 @@ import android.view.ViewGroup;
 
 import com.example.finecontrolapp.R;
 import com.example.finecontrolapp.databinding.FragmentTransactionsBinding;
-import com.example.finecontrolapp.ui.main.data.TransactionAdapter;
-import com.example.finecontrolapp.ui.main.data.Transactions;
+import com.example.finecontrolapp.data.TransactionAdapter;
 
 
 public class  TransactionsFragment extends Fragment {

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,11 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.finecontrolapp.databinding.FragmentHomeBinding;
-import com.example.finecontrolapp.ui.main.TransactionsFragment;
 import com.example.finecontrolapp.ui.main.TransactionsViewModel;
-import com.example.finecontrolapp.ui.main.data.TransactionAdapter;
-import com.example.finecontrolapp.ui.main.login.MainActivityViewModel;
-import com.example.finecontrolapp.ui.main.profile.ProfileFragment;
+import com.example.finecontrolapp.data.TransactionAdapter;
+import com.example.finecontrolapp.login.MainActivityViewModel;
 
 import java.util.Locale;
 

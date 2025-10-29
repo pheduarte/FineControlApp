@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finecontrolapp.R;
-import com.example.finecontrolapp.ui.main.data.BudgetItem;
+import com.example.finecontrolapp.data.BudgetItem;
 
 import java.util.List;
 

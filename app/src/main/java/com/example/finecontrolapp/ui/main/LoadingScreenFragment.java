@@ -2,7 +2,6 @@ package com.example.finecontrolapp.ui.main;
 
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,7 +15,6 @@ import android.view.ViewGroup;
 
 import com.example.finecontrolapp.R;
 import com.example.finecontrolapp.databinding.FragmentLoadingScreenBinding;
-import com.example.finecontrolapp.ui.main.login.LoginScreen;
 
 public class LoadingScreenFragment extends Fragment {
 

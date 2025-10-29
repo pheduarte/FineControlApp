@@ -5,8 +5,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.finecontrolapp.ui.main.data.Transactions;
-import com.example.finecontrolapp.ui.main.data.repository.TransactionsRepository;
+import com.example.finecontrolapp.data.Transactions;
+import com.example.finecontrolapp.data.repository.TransactionsRepository;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

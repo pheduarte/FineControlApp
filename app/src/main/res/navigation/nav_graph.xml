@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.example.finecontrolapp.ui.main.login.SignUpFragment"
+        android:name="com.example.finecontrolapp.login.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/loginScreenFragment"
-        android:name="com.example.finecontrolapp.ui.main.login.LoginScreenFragment"
+        android:name="com.example.finecontrolapp.login.LoginScreenFragment"
         android:label="fragment_login_screen"
         tools:layout="@layout/fragment_login_screen" >
         <action
@@ -30,6 +30,9 @@
             app:destination="@id/mainActivity"
             app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginScreenFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
     </fragment>
     <activity
         android:id="@+id/mainActivity"
@@ -48,6 +51,14 @@
         tools:layout="@layout/fragment_loading_screen" >
         <action
             android:id="@+id/action_loadingScreenFragment_to_loginScreenFragment"
+            app:destination="@id/loginScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.example.finecontrolapp.login.ForgotPasswordFragment"
+        android:label="ForgotPasswordFragment" >
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_loginScreenFragment"
             app:destination="@id/loginScreenFragment" />
     </fragment>
 </navigation>

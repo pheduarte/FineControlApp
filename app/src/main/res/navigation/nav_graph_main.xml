@@ -32,7 +32,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.finecontrolapp.ui.main.profile.ProfileFragment"
+        android:name="com.example.finecontrolapp.profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -62,22 +62,22 @@
         tools:layout="@layout/fragment_new" />
     <fragment
         android:id="@+id/accountSettingsFragment"
-        android:name="com.example.finecontrolapp.ui.main.profile.AccountSettingsFragment"
+        android:name="com.example.finecontrolapp.profile.AccountSettingsFragment"
         android:label="fragment_account_settings"
         tools:layout="@layout/fragment_account_settings" />
     <fragment
         android:id="@+id/helpSupportFragment"
-        android:name="com.example.finecontrolapp.ui.main.profile.HelpSupportFragment"
+        android:name="com.example.finecontrolapp.profile.HelpSupportFragment"
         android:label="fragment_help_support"
         tools:layout="@layout/fragment_help_support" />
     <fragment
         android:id="@+id/notificationsFragment"
-        android:name="com.example.finecontrolapp.ui.main.profile.NotificationsFragment"
+        android:name="com.example.finecontrolapp.profile.NotificationsFragment"
         android:label="fragment_notifications"
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/privacySecurityFragment"
-        android:name="com.example.finecontrolapp.ui.main.profile.PrivacySecurityFragment"
+        android:name="com.example.finecontrolapp.profile.PrivacySecurityFragment"
         android:label="fragment_privacy_security"
         tools:layout="@layout/fragment_privacy_security" />
 

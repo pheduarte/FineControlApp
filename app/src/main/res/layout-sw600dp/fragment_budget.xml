@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroud_main">
+
+    <ImageView
+        android:id="@+id/header_card"
+        android:layout_width="374dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="90dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/card" />
+
+
+
+    <TextView
+        android:id="@+id/textView80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Spending Overview"
+        android:textColor="#101828"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/header_card"
+        app:layout_constraintTop_toTopOf="@+id/header_card" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="Track your speding across categories"
+        android:textColor="#A0101828"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/header_card"
+        app:layout_constraintStart_toStartOf="@+id/header_card" />
+
+
+    <ImageView
+        android:id="@+id/card_budget_usage"
+        android:layout_width="374dp"
+        android:layout_height="189dp"
+        android:layout_marginTop="24dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_card"
+        app:srcCompat="@drawable/card" />
+
+
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="36dp"
+        android:text="Monthly spent"
+        android:textColor="#101828"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/card_budget_usage"
+        app:layout_constraintTop_toTopOf="@+id/card_budget_usage" />
+
+    <TextView
+        android:id="@+id/textMonthYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:text="October 2025"
+        android:textColor="#A0101828"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView16"
+        app:layout_constraintEnd_toStartOf="@+id/btnNextMonth" />
+
+    <ImageButton
+        android:id="@+id/btnNextMonth"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="Next month"
+        android:scaleType="fitXY"
+        android:src="@drawable/chevron_right"
+        app:layout_constraintEnd_toEndOf="@+id/card_budget_usage"
+        app:layout_constraintTop_toTopOf="@+id/card_budget_usage" />
+
+    <ImageButton
+        android:id="@+id/btnPreviousMonth"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="36dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="Previous month"
+        android:scaleType="fitXY"
+        android:src="@drawable/chevron_left"
+        app:layout_constraintStart_toEndOf="@+id/textView16"
+        app:layout_constraintTop_toTopOf="@+id/card_budget_usage" />
+
+    <TextView
+        android:id="@+id/total_spent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="$0"
+        android:textColor="#101828"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/card_budget_usage"
+        app:layout_constraintStart_toStartOf="@+id/card_budget_usage"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <ImageView
+        android:id="@+id/card_budget"
+        android:layout_width="374dp"
+        android:layout_height="375dp"
+        android:layout_marginTop="24dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_budget_usage"
+        app:srcCompat="@drawable/card" />
+
+    <TextView
+        android:id="@+id/lable_budget_by_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Spending by category"
+        android:textColor="#101828"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/card_budget"
+        app:layout_constraintTop_toTopOf="@+id/card_budget" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_budget_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="3dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/card_budget"
+        app:layout_constraintEnd_toEndOf="@+id/card_budget"
+        app:layout_constraintStart_toStartOf="@+id/card_budget"
+        app:layout_constraintTop_toBottomOf="@+id/lable_budget_by_category" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
