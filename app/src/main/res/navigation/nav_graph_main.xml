@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.finecontrolapp.HomeFragment"
+        android:name="com.pheduarte.finecontrol.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -26,13 +26,13 @@
 
     <fragment
         android:id="@+id/budgetFragment"
-        android:name="com.example.finecontrolapp.ui.main.BudgetFragment"
+        android:name="com.pheduarte.finecontrol.ui.main.BudgetFragment"
         android:label="Budget"
         tools:layout="@layout/fragment_budget" />
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.finecontrolapp.profile.ProfileFragment"
+        android:name="com.pheduarte.finecontrol.profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -51,13 +51,13 @@
 
     <fragment
         android:id="@+id/transactionsFragment"
-        android:name="com.example.finecontrolapp.ui.main.TransactionsFragment"
+        android:name="com.pheduarte.finecontrol.ui.main.TransactionsFragment"
         android:label="Settings"
         tools:layout="@layout/fragment_transactions" />
 
     <fragment
         android:id="@+id/newFragment"
-        android:name="com.example.finecontrolapp.ui.main.NewFragment"
+        android:name="com.pheduarte.finecontrol.ui.main.NewFragment"
         android:label="New"
         tools:layout="@layout/fragment_new" >
         <action
@@ -66,22 +66,22 @@
     </fragment>
     <fragment
         android:id="@+id/accountSettingsFragment"
-        android:name="com.example.finecontrolapp.profile.AccountSettingsFragment"
+        android:name="com.pheduarte.finecontrol.profile.AccountSettingsFragment"
         android:label="fragment_account_settings"
         tools:layout="@layout/fragment_account_settings" />
     <fragment
         android:id="@+id/helpSupportFragment"
-        android:name="com.example.finecontrolapp.profile.HelpSupportFragment"
+        android:name="com.pheduarte.finecontrol.profile.HelpSupportFragment"
         android:label="fragment_help_support"
         tools:layout="@layout/fragment_help_support" />
     <fragment
         android:id="@+id/notificationsFragment"
-        android:name="com.example.finecontrolapp.profile.NotificationsFragment"
+        android:name="com.pheduarte.finecontrol.profile.NotificationsFragment"
         android:label="fragment_notifications"
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/privacySecurityFragment"
-        android:name="com.example.finecontrolapp.profile.PrivacySecurityFragment"
+        android:name="com.pheduarte.finecontrol.profile.PrivacySecurityFragment"
         android:label="fragment_privacy_security"
         tools:layout="@layout/fragment_privacy_security" />
 

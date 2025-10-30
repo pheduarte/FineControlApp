@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backgroud_main"
-    tools:context=".login.LoginScreenFragment">
+    tools:context="com.pheduarte.finecontrol.login.LoginScreenFragment">
 
     <ImageView
         android:id="@+id/imageView2"

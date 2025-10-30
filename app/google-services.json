@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:383313038419:android:38001a52069407e12b0aa6",
         "android_client_info": {
-          "package_name": "com.example.finecontrolapp"
+          "package_name": "com.pheduarte.finecontrol"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "383313038419-85sdao9cbueogiqgrpterhbn0viu8fle.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.finecontrolapp",
+            "package_name": "com.pheduarte.finecontrol",
             "certificate_hash": "faebb799e8fadeb9d3b5fd71efeffdca57f35586"
           }
         },

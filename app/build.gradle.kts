@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    namespace = "com.example.finecontrolapp"
+    namespace = "com.pheduarte.finecontrol"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "com.example.finecontrolapp"
+        applicationId = "com.pheduarte.finecontrol"
         minSdk = 24
         targetSdk = 36
         versionCode = 1

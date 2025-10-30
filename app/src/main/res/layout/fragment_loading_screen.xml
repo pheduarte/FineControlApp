@@ -5,7 +5,7 @@
     android:id="@+id/loading_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.LoadingScreenFragment">
+    tools:context="com.pheduarte.finecontrol.ui.main.LoadingScreenFragment">
 
     <ImageView
         android:id="@+id/imageSplash"
@@ -31,7 +31,7 @@
         android:text="FineControl"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/white"
-        android:textSize="45sp"
+        android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageSplash" />
@@ -42,11 +42,11 @@
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="40dp"
-        android:layout_marginTop="276dp"
+        android:layout_marginTop="400dp"
         android:backgroundTint="@color/white"
-        android:paddingHorizontal="130dp"
-        android:paddingVertical="10dp"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="5dp"
+        android:layout_marginHorizontal="20dp"
         android:text="@string/btnStart"
         android:textAllCaps="false"
         android:textColor="#3535FF"
@@ -55,11 +55,9 @@
         app:iconGravity="textStart"
         app:iconPadding="8dp"
         app:iconTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/imageSplash"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoFineControl"
-        app:layout_constraintVertical_bias="0.765" />
+        app:layout_constraintStart_toStartOf="@+id/imageSplash"
+        app:layout_constraintTop_toBottomOf="@+id/logoFineControl" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

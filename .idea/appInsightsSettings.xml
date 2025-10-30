@@ -8,7 +8,7 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="com.example.finecontrolapp" />
+                  <option name="appId" value="com.pheduarte.finecontrol" />
                   <option name="mobileSdkAppId" value="1:383313038419:android:38001a52069407e12b0aa6" />
                   <option name="projectId" value="finecontrol-app" />
                   <option name="projectNumber" value="383313038419" />
