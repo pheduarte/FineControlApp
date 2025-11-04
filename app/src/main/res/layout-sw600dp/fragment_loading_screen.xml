@@ -43,7 +43,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="200dp"
-        android:layout_marginTop="752dp"
+        android:layout_marginTop="404dp"
         android:backgroundTint="@color/white"
         android:paddingHorizontal="30dp"
         android:paddingVertical="5dp"

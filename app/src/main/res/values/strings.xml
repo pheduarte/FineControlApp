@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">FineControl App</string>
     <string name="btnStart">Begin</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="prompt_email">Email</string>
+    <string name="title_activity_login" translatable="false">LoginActivity</string>
+    <string name="prompt_email" translatable="false">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
@@ -10,20 +10,52 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="finecontrol">FineControlEU</string>
+    <string name="finecontrol" translatable="false">FineControlEU</string>
     <string name="btnLogin">Login</string>
     <string name="textForgotPassword">Forgot Password?</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="hi_userName">Hi User!</string>
-    <string name="total_balance_main_screen">$0</string>
+    <string name="total_balance_main_screen" translatable="false">$0</string>
     <string name="percentage_total_balance">All transactions</string>
     <string name="btnLogout">Logout</string>
     <string name="btnClear_all_transactions">Clear all transactions</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="default_web_client_id">
+    <string name="dummy_button" translatable="false">Dummy Button</string>
+    <string name="dummy_content" translatable="false">DUMMY\nCONTENT</string>
+    <string name="default_web_client_id" translatable="false">
     1234567890-abcdefg.apps.googleusercontent.com
 </string>
+    <string name="spending_overview">Spending Overview</string>
+    <string name="track_your_spending_across_categories">Track your spending across categories</string>
+    <string name="monthly_spent">Monthly spent</string>
+    <string name="october_2025">October 2025</string>
+    <string name="next_month">Next month</string>
+    <string name="previous_month">Previous month</string>
+    <string name="spending_by_category">Spending by category</string>
+    <string name="bt_new">New</string>
+    <string name="all_transactions">All transactions</string>
+    <string name="no_transactions_found">No transactions found</string>
+    <string name="total_balance">Total balance</string>
+    <string name="transactions">Transactions</string>
+    <string name="home">Home</string>
+    <string name="budget">Budget</string>
+    <string name="profile">Profile</string>
+    <string name="filter">Filter</string>
+    <string name="change_password">Change password</string>
+    <string name="type_new_password">Type new password</string>
+    <string name="re_enter_new_password">Re-enter new password</string>
+    <string name="my_account">My account</string>
+    <string name="delete_account">Delete account</string>
+    <string name="add_transaction">Add transaction</string>
+    <string name="record_your_income_or_expense">Record your income or expense</string>
+    <string name="income">+ Income</string>
+    <string name="expense">- Expense</string>
+    <string name="select_date">Select Date</string>
+    <string name="no_date_selected">No date selected</string>
+    <string name="cancel">Cancel</string>
+    <string name="amount">Amount</string>
+    <string name="category">Category</string>
+    <string name="description">Description</string>
+    <string name="what_was_this_for">What was this for?</string>
 
 
 </resources>

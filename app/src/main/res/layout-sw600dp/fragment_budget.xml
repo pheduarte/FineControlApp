@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="20dp"
-        android:text="Track your speding across categories"
+        android:text="Track your spending across categories"
         android:textColor="#A0101828"
         android:textSize="16sp"
         android:textStyle="normal"

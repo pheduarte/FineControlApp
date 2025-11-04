@@ -1,5 +1,7 @@
 package com.pheduarte.finecontrol.login;
 
+import static kotlin.text.Typography.tm;
+
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -11,21 +13,30 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.telephony.TelephonyManager;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.i18n.phonenumbers.NumberParseException;
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
+import com.google.i18n.phonenumbers.Phonenumber;
 import com.pheduarte.finecontrol.databinding.FragmentSignUpBinding;
 import com.pheduarte.finecontrol.ui.main.MainActivity;
 import com.pheduarte.finecontrol.data.User;
+
+import java.util.Locale;
+
 
 public class SignUpFragment extends Fragment {
 
     private LoginViewModel loginViewModel;
     private SignUpViewModel signUpViewModel;
     private FragmentSignUpBinding binding;
+
+
 
     public static SignUpFragment newInstance() {
         return new SignUpFragment();
@@ -51,6 +62,7 @@ public class SignUpFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
         binding.btnSignUp.setOnClickListener(v -> {
             try {
                 // Collect user details
@@ -58,8 +70,17 @@ public class SignUpFragment extends Fragment {
                 String lName = binding.txtLastName.getText().toString().trim();
                 String email = binding.txtEmail.getText().toString().trim();
                 String tempPassword = binding.txtPassword.getText().toString().trim();
-                String confirmedPassword = binding.txtPassword2.getText().toString().trim();;
+                String confirmedPassword = binding.txtPassword2.getText().toString().trim();
                 String phoneText = binding.txtPhoneNumber.getText().toString().trim();
+
+                boolean isValid = PhoneValidator.isValidPhoneNumber(getContext(), phoneText);
+
+                if (!isValid) {
+                    binding.txtPhoneNumber.setError("Invalid phone number");
+                    binding.txtPhoneNumber.requestFocus();
+                    return;
+                }
+
 
                 if (fName.isEmpty() || lName.isEmpty() || email.isEmpty() ||
                         tempPassword.isEmpty() || phoneText.isEmpty()) {
@@ -74,7 +95,7 @@ public class SignUpFragment extends Fragment {
                     return;
                 }
 
-                while (!tempPassword.equals(confirmedPassword)) {
+                if (!tempPassword.equals(confirmedPassword)) {
                     binding.txtPassword2.setError("Passwords do not match");
                     binding.txtPassword2.requestFocus();
                     return;
@@ -123,5 +144,15 @@ public class SignUpFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    public boolean isValidPhoneNumber(String number, String countryCode) {
+        PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
+        try {
+            Phonenumber.PhoneNumber parsedNumber = phoneUtil.parse(number, countryCode);
+            return phoneUtil.isValidNumber(parsedNumber);
+        } catch (NumberParseException e) {
+            return false;
+        }
     }
 }
