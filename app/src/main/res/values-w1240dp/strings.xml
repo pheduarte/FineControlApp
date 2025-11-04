@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="monthly_spent">Monthly spent</string>
+    <string name="october_2025">October 2025</string>
+    <string name="next_month">Next month</string>
+    <string name="previous_month">Previous month</string>
+    <string name="spending_by_category">Spending by category</string>
+    <string name="all_transactions">All transactions</string>
+    <string name="no_transactions_found">No transactions found</string>
+    <string name="total_balance">Total balance</string>
+    <string name="budget">Budget</string>
+    <string name="profile">Profile</string>
+    <string name="filter">Filter</string>
+    <string name="change_password">Change password</string>
+    <string name="type_new_password">Type new password</string>
+    <string name="re_enter_new_password">Re-enter new password</string>
+    <string name="my_account">My account</string>
+    <string name="delete_account">Delete account</string>
+    <string name="add_transaction">Add transaction</string>
+    <string name="record_your_income_or_expense">Record your income or expense</string>
+    <string name="income">+ Income</string>
+    <string name="expense">- Expense</string>
+    <string name="select_date">Select Date</string>
+    <string name="no_date_selected">No date selected</string>
+    <string name="cancel">Cancel</string>
+    <string name="amount">Amount</string>
+    <string name="category">Category</string>
+    <string name="description">Description</string>
+    <string name="what_was_this_for">What was this for?</string>
+</resources>

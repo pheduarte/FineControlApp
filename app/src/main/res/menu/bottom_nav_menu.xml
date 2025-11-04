@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/homeFragment"
-        android:title="Home"
+        android:title="@string/home"
         android:icon="@drawable/icon_home" />
 
     <item
         android:id="@+id/transactionsFragment"
-        android:title="Transactions"
+        android:title="@string/transactions"
         android:icon="@drawable/icon_list" />
 
 <!--    <item-->
@@ -17,12 +17,12 @@
 
     <item
         android:id="@+id/budgetFragment"
-        android:title="Budget"
+        android:title="@string/budget"
         android:icon="@drawable/icon_graph" />
 
     <item
         android:id="@+id/profileFragment"
-        android:title="Profile"
+        android:title="@string/profile"
         android:icon="@drawable/icon_profile" />
 
 </menu>

@@ -13,8 +13,8 @@ android {
         applicationId = "com.pheduarte.finecontrol"
         minSdk = 24
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 3
+        versionName = "1.0.2 Beta"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -67,9 +67,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    implementation("androidx.room:room-runtime:2.8.2")
-    annotationProcessor("androidx.room:room-compiler:2.8.2")
-
+    implementation("androidx.room:room-runtime:2.8.3")
+    annotationProcessor("androidx.room:room-compiler:2.8.3")
+    implementation("com.googlecode.libphonenumber:libphonenumber:9.0.17")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.3")
     implementation("com.google.firebase:firebase-auth:23.0.0")
     implementation("com.google.android.gms:play-services-auth:21.2.0")
