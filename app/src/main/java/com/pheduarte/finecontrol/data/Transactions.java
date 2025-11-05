@@ -44,7 +44,16 @@ public class Transactions {
         this.category = category;
         this.date = date;
         this.userEmail = userEmail;
+    }
 
+    // Getter for the ID
+    public int getTransactionId() {
+        return transactionID;
+    }
+
+    // Setter to assign the ID
+    public void setTransactionId(int transactionId) {
+        this.transactionID = transactionId;
     }
 
 }

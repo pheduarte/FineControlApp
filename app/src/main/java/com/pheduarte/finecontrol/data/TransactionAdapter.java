@@ -70,4 +70,9 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
             txtDate = itemView.findViewById(R.id.txtDate);
         }
     }
+
+    public List<Transactions> getCurrentList() {
+        return transactionList;
+    }
+
 }

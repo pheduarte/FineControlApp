@@ -2,12 +2,17 @@ package com.pheduarte.finecontrol.ui.main;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,9 +20,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.pheduarte.finecontrol.R;
+import com.pheduarte.finecontrol.data.Transactions;
 import com.pheduarte.finecontrol.databinding.FragmentTransactionsBinding;
 import com.pheduarte.finecontrol.data.TransactionAdapter;
+
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 
 public class  TransactionsFragment extends Fragment {
@@ -64,6 +73,60 @@ public class  TransactionsFragment extends Fragment {
             });
         }
 
+
+        ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView,
+                                  @NonNull RecyclerView.ViewHolder viewHolder,
+                                  @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                int position = viewHolder.getAdapterPosition();
+
+                // Get the transaction being swiped
+                Transactions deletedTransaction = adapter.getCurrentList().get(position);
+
+                // Delete from database via ViewModel
+                viewModel.deleteTransactions(deletedTransaction.getTransactionId());
+
+                // Remove from adapter’s list (you might use submitList if using ListAdapter)
+                adapter.notifyItemRemoved(position);
+
+                // Show Snackbar with Undo option
+                Snackbar.make(binding.getRoot(), "Transaction deleted", Snackbar.LENGTH_LONG)
+                        .setAction("UNDO", v -> {
+                            viewModel.insert(deletedTransaction);
+                        })
+                        .show();
+            }
+
+            // Add swipe effect when deleting transactions
+            @Override
+            public void onChildDraw(@NonNull Canvas c,
+                                    @NonNull RecyclerView recyclerView,
+                                    @NonNull RecyclerView.ViewHolder viewHolder,
+                                    float dX, float dY,
+                                    int actionState,
+                                    boolean isCurrentlyActive) {
+
+                new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                        .addSwipeLeftBackgroundColor(ContextCompat.getColor(requireContext(), R.color.redExpense))
+                        .addSwipeLeftActionIcon(R.drawable.ic_delete) // your trash icon
+                        .addSwipeRightBackgroundColor(ContextCompat.getColor(requireContext(), R.color.redExpense))
+                        .addSwipeRightActionIcon(R.drawable.ic_delete)
+                        .create()
+                        .decorate();
+
+                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+            }
+
+        };
+
+        // Attach to RecyclerView
+        new ItemTouchHelper(simpleCallback).attachToRecyclerView(binding.recyclerTransactions);
 
     }
 
