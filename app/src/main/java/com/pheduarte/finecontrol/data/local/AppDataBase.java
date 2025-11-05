@@ -32,7 +32,7 @@ public abstract class AppDataBase extends RoomDatabase{
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                                     AppDataBase.class, "finecontrol_database")
-                            .fallbackToDestructiveMigration()
+                            .fallbackToDestructiveMigration() //Remove for production since it deletes db
                             .build();
                 }
             }

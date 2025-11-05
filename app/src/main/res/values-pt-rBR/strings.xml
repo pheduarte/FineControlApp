@@ -56,4 +56,6 @@
     <string name="don_t_have_an_account_sign_up">Não possui conta? Cadastre-se</string>
     <string name="sign_up_with">Entre com</string>
     <string name="continue_with_google">Continuar com Google</string>
+    <string name="back">Back</string>
+    <string name="privacy_policy">Privacy policy</string>
 </resources>
