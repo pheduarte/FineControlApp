@@ -47,4 +47,13 @@
     <string name="category">Categoria</string>
     <string name="description">Descrição</string>
     <string name="what_was_this_for">Descrição</string>
+    <string name="first_name">Nome</string>
+    <string name="last_name">Sobrenome</string>
+    <string name="email">Email</string>
+    <string name="phone_number">Telefone</string>
+    <string name="password">Senha</string>
+    <string name="re_enter_password">Repita senha</string>
+    <string name="don_t_have_an_account_sign_up">Não possui conta? Cadastre-se</string>
+    <string name="sign_up_with">Entre com</string>
+    <string name="continue_with_google">Continuar com Google</string>
 </resources>

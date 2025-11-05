@@ -34,6 +34,10 @@ public class LoginViewModel extends AndroidViewModel {
         repository.insert(user);
     }
 
+    public boolean getUserNow(String email) {
+        return repository.getUserNow(email);
+    }
+
     public LiveData<List<User>> getAllUsers() {
         return repository.getAllUsers();
     }

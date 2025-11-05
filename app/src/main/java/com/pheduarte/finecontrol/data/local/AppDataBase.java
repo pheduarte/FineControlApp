@@ -14,7 +14,7 @@ import com.pheduarte.finecontrol.data.User;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {User.class, Transactions.class}, version = 2)
+@Database(entities = {User.class, Transactions.class}, version = 3, exportSchema = true)
 
 public abstract class AppDataBase extends RoomDatabase{
     private static volatile AppDataBase INSTANCE;
@@ -32,6 +32,7 @@ public abstract class AppDataBase extends RoomDatabase{
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                                     AppDataBase.class, "finecontrol_database")
+                            .fallbackToDestructiveMigration()
                             .build();
                 }
             }

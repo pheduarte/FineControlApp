@@ -36,8 +36,6 @@ public class SignUpFragment extends Fragment {
     private SignUpViewModel signUpViewModel;
     private FragmentSignUpBinding binding;
 
-
-
     public static SignUpFragment newInstance() {
         return new SignUpFragment();
     }
@@ -45,8 +43,6 @@ public class SignUpFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Safe to get ViewModels here
         loginViewModel = new ViewModelProvider(requireActivity()).get(LoginViewModel.class);
         signUpViewModel = new ViewModelProvider(this).get(SignUpViewModel.class);
     }
@@ -62,10 +58,8 @@ public class SignUpFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
         binding.btnSignUp.setOnClickListener(v -> {
             try {
-                // Collect user details
                 String fName = binding.txtFirstName.getText().toString().trim();
                 String lName = binding.txtLastName.getText().toString().trim();
                 String email = binding.txtEmail.getText().toString().trim();
@@ -73,14 +67,13 @@ public class SignUpFragment extends Fragment {
                 String confirmedPassword = binding.txtPassword2.getText().toString().trim();
                 String phoneText = binding.txtPhoneNumber.getText().toString().trim();
 
-                boolean isValid = PhoneValidator.isValidPhoneNumber(getContext(), phoneText);
 
+                boolean isValid = PhoneValidator.isValidPhoneNumber(getContext(), phoneText);
                 if (!isValid) {
                     binding.txtPhoneNumber.setError("Invalid phone number");
                     binding.txtPhoneNumber.requestFocus();
                     return;
                 }
-
 
                 if (fName.isEmpty() || lName.isEmpty() || email.isEmpty() ||
                         tempPassword.isEmpty() || phoneText.isEmpty()) {
@@ -88,7 +81,6 @@ public class SignUpFragment extends Fragment {
                     return;
                 }
 
-                // Validate email format
                 if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     binding.txtEmail.setError("Please enter a valid email address");
                     binding.txtEmail.requestFocus();
@@ -102,43 +94,40 @@ public class SignUpFragment extends Fragment {
                 }
 
                 String password = tempPassword;
+                User newUser = new User(fName, lName, email, phoneText, password);
 
-                int phoneNumber = Integer.parseInt(phoneText);
+                // --- background thread for one-time synchronous query ---
+                new Thread(() -> {
+                    boolean exists = loginViewModel.getUserNow(email);
 
-                User newUser = new User(fName, lName, email, phoneNumber, password);
-
-                loginViewModel.getUser(email).observe(getViewLifecycleOwner(), new Observer<User>() {
-                    @Override
-                    public void onChanged(User user) {
-                        if (user != null) {
-                            Toast.makeText(getContext(), "User already exists, sign in instead", Toast.LENGTH_SHORT).show();
-
+                    requireActivity().runOnUiThread(() -> {
+                        if (exists) {
+                            Toast.makeText(getContext(),
+                                    "User already exists, sign in instead",
+                                    Toast.LENGTH_SHORT).show();
                         } else {
                             loginViewModel.register(newUser);
+                            Toast.makeText(getContext(),
+                                    "User Registered Successfully!",
+                                    Toast.LENGTH_SHORT).show();
 
-                            new android.os.Handler().postDelayed(() -> {
-                                Toast.makeText(getContext(), "User Registered Successfully!", Toast.LENGTH_SHORT).show();
+                            SharedPreferences prefs = requireContext()
+                                    .getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
+                            prefs.edit().putString("logged_in_email", email).apply();
 
-                                // Save user details to SharedPreferences
-                                SharedPreferences prefs = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
-                                prefs.edit().putString("logged_in_email", email).apply();
+                            Intent intent = new Intent(requireContext(), MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                            requireActivity().finish();
+                        }
+                    });
+                }).start();
 
-                                Intent intent = new Intent(requireContext(), MainActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
-                                requireActivity().finish();
-                            }, 400);
-                    }
-                        loginViewModel.getUser(email).removeObserver(this);
-                    }
-                });
-
-            } catch (NumberFormatException e) {
-                Toast.makeText(getContext(), "Invalid phone number", Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                Toast.makeText(getContext(), "Invalid input: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
-
 
     @Override
     public void onDestroyView() {
