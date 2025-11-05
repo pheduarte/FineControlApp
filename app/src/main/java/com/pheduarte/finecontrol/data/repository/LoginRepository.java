@@ -42,6 +42,11 @@ public class LoginRepository {
         return userDAO.getAllUsers();
     }
 
+    public boolean getUserNow(String email) {
+        User user = userDAO.getUserNow(email);
+        return user != null;
+    }
+
     public void insert(User user) {
         executorService.execute(() -> userDAO.insert(user));
     }

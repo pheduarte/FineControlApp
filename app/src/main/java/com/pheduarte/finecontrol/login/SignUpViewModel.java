@@ -9,9 +9,9 @@ public class SignUpViewModel extends ViewModel {
     private String lastName;
     private String email;
     private String password;
-    private int phoneNumber;
+    private String phoneNumber;
 
-    public void setUserDetails(String fName, String lName, String email, int phone, String pass) {
+    public void setUserDetails(String fName, String lName, String email, String phone, String pass) {
         this.firstName = fName;
         this.lastName = lName;
         this.email = email;
