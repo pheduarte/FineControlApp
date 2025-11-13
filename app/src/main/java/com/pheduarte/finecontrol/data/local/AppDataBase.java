@@ -14,7 +14,7 @@ import com.pheduarte.finecontrol.data.User;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {User.class, Transactions.class}, version = 3, exportSchema = true)
+@Database(entities = {User.class, Transactions.class}, version = 4, exportSchema = true)
 
 public abstract class AppDataBase extends RoomDatabase{
     private static volatile AppDataBase INSTANCE;

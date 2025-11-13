@@ -7,14 +7,14 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 @Entity(
-        tableName = "transactions",
-        foreignKeys = @ForeignKey(
-                entity = User.class,
-                parentColumns = "email",         // column in User
-                childColumns = "userEmail",      // column in Transaction
-                onDelete = ForeignKey.CASCADE    // delete all transactions if user is deleted
-        ),
-        indices = {@Index(value = "userEmail")} // speeds up queries
+        tableName = "transactions"
+//        foreignKeys = @ForeignKey(
+//                entity = User.class,
+//                parentColumns = "email",         // column in User
+//                childColumns = "userEmail",      // column in Transaction
+//                onDelete = ForeignKey.CASCADE    // delete all transactions if user is deleted
+//        ),
+//        indices = {@Index(value = "userEmail")} // speeds up queries
 )
 
 public class Transactions {

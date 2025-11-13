@@ -9,12 +9,49 @@
       "client_info": {
         "mobilesdk_app_id": "1:383313038419:android:38001a52069407e12b0aa6",
         "android_client_info": {
-          "package_name": "com.pheduarte.finecontrol"
+          "package_name": "com.example.finecontrolapp"
         }
       },
       "oauth_client": [
         {
           "client_id": "383313038419-85sdao9cbueogiqgrpterhbn0viu8fle.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.finecontrolapp",
+            "certificate_hash": "faebb799e8fadeb9d3b5fd71efeffdca57f35586"
+          }
+        },
+        {
+          "client_id": "383313038419-kqoier2rkc8d5e7d7ue37hbv2s5nr86v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFNFVzqCmX234XhgYXi1y-6GHPAJ8BleE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "383313038419-kqoier2rkc8d5e7d7ue37hbv2s5nr86v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:383313038419:android:38e17fe704fbce372b0aa6",
+        "android_client_info": {
+          "package_name": "com.pheduarte.finecontrol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "383313038419-js0atftqhl0gcueqem8urjrt0sutrv2u.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.pheduarte.finecontrol",
