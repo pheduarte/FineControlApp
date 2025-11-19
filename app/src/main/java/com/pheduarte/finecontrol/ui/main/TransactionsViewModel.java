@@ -26,6 +26,10 @@ public class TransactionsViewModel extends AndroidViewModel {
         return repository.getTransactionsByUser(userEmail);
     }
 
+    LiveData<List<Transactions>> filterByType(String email, String type) {
+        return repository.filterByType(email, type);
+    };
+
     public void insert(Transactions transactions) {
         repository.insert(transactions);
     }
@@ -48,5 +52,9 @@ public class TransactionsViewModel extends AndroidViewModel {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM", Locale.getDefault());
         String monthYear = format.format(calendar.getTime());
         return repository.getMonthlyByCategory(userEmail, monthYear, category);
+    };
+
+    public LiveData<List<Transactions>> searchTransactions(String userEmail, String search) {
+        return repository.searchTransactions(userEmail, search);
     };
 }

@@ -93,8 +93,7 @@ public class SignUpFragment extends Fragment {
                     return;
                 }
 
-                String password = tempPassword;
-                User newUser = new User(fName, lName, email, phoneText, password);
+                User newUser = new User(fName, lName, email, phoneText, tempPassword);
 
                 // --- background thread for one-time synchronous query ---
                 new Thread(() -> {
