@@ -16,6 +16,9 @@ public interface TransactionsDAO {
     @Query("SELECT * FROM transactions WHERE userEmail = :userEmail ORDER BY date")
     LiveData<List<Transactions>> getTransactionsByUser(String userEmail);
 
+    @Query("SELECT * FROM transactions WHERE userEmail = :email AND type = :type")
+    LiveData<List<Transactions>> filterByType(String email, String type);
+
     @Query("DELETE FROM transactions WHERE transactionId = :id")
     void deleteTransaction(int id);
 
@@ -47,5 +50,8 @@ public interface TransactionsDAO {
 
     @Query("SELECT COUNT(*) FROM transactions WHERE userEmail = :userEmail")
     LiveData<Integer> getCount(String userEmail);
+
+    @Query("SELECT * FROM transactions WHERE userEmail = :userEmail AND (category LIKE '%' || :search || '%' OR description LIKE '%' || :search || '%' OR type LIKE '%' || :search || '%') ORDER BY date DESC")
+    LiveData<List<Transactions>> searchTransactions(String userEmail, String search);
 
 }

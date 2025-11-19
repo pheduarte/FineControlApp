@@ -42,7 +42,7 @@
         app:srcCompat="@drawable/textfield" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/myButton"
+        android:id="@+id/btnFilter"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"

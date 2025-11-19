@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/filter_all"
+        android:title="All" />
+
+    <item
+        android:id="@+id/filter_income"
+        android:title="Income" />
+
+    <item
+        android:id="@+id/filter_expense"
+        android:title="Expense" />
+
+    <item
+        android:id="@+id/filter_food"
+        android:title="Food" />
+
+    <item
+        android:id="@+id/filter_transport"
+        android:title="Transport" />
+
+    <item
+        android:id="@+id/filter_shopping"
+        android:title="Shopping" />
+
+    <item
+        android:id="@+id/filter_house"
+        android:title="House" />
+
+    <item
+        android:id="@+id/filter_Subscription"
+        android:title="Subscription" />
+
+    <item
+        android:id="@+id/filter_bills"
+        android:title="Bills" />
+
+    <item
+        android:id="@+id/filter_health"
+        android:title="Health" />
+
+    <item
+        android:id="@+id/filter_salary"
+        android:title="Salary" />
+
+    <item
+        android:id="@+id/filter_transfer"
+        android:title="Transfer" />
+
+    <item
+        android:id="@+id/filter_others"
+        android:title="Others" />
+
+</menu>

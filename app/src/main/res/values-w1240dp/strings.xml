@@ -38,4 +38,8 @@
     <string name="continue_with_google">Continue with Google</string>
     <string name="back">Back</string>
     <string name="privacy_policy">Privacy policy</string>
+    <string name="help_and_support"><![CDATA[Help & Support]]></string>
+    <string name="support_email">finecontrolapp@gmail.com</string>
+    <string name="finecontrol_support">FineControl Support</string>
+    <string name="no_email_app_found">No email app found</string>
 </resources>

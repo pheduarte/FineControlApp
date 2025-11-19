@@ -73,7 +73,11 @@
         android:id="@+id/helpSupportFragment"
         android:name="com.pheduarte.finecontrol.profile.HelpSupportFragment"
         android:label="fragment_help_support"
-        tools:layout="@layout/fragment_help_support" />
+        tools:layout="@layout/fragment_help_support" >
+        <action
+            android:id="@+id/action_helpSupportFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/notificationsFragment"
         android:name="com.pheduarte.finecontrol.profile.NotificationsFragment"

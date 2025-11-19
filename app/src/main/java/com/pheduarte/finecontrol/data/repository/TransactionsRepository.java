@@ -30,6 +30,10 @@ public class TransactionsRepository {
         return transactionsDAO.getTransactionsByUser(userEmail);
     }
 
+    public LiveData<List<Transactions>> filterByType(String email, String type) {
+        return transactionsDAO.filterByType(email, type);
+    };
+
     public void deleteTransactions(int id) {
         executorService.execute(() -> transactionsDAO.deleteTransaction(id));
     }
@@ -52,6 +56,10 @@ public class TransactionsRepository {
 
     public LiveData<Double> getMonthlyByCategory(String userEmail, String monthYear, String category) {
         return transactionsDAO.getMonthlyByCategory(userEmail, monthYear, category);
+    }
+
+    public LiveData<List<Transactions>> searchTransactions(String userEmail, String search) {
+        return transactionsDAO.searchTransactions(userEmail, search);
     }
 
 }
