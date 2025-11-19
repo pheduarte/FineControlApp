@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">FineControl App</string>
+    <string name="app_name">App FineControl</string>
     <string name="track_your_spending_across_categories">Acompanhe os seus gastos por categoria</string>
     <string name="monthly_spent">Gasto mensal</string>
     <string name="october_2025">Outubro 2025</string>
@@ -56,10 +56,13 @@
     <string name="don_t_have_an_account_sign_up">Não possui conta? Cadastre-se</string>
     <string name="sign_up_with">Entre com</string>
     <string name="continue_with_google">Continuar com Google</string>
-    <string name="back">Back</string>
-    <string name="privacy_policy">Privacy policy</string>
+    <string name="back">Voltar</string>
+    <string name="privacy_policy">Política de privacidade</string>
+    <string name="search_transactions">Pesquisar transações</string>
     <string name="help_and_support"><![CDATA[Help & Support]]></string>
     <string name="support_email">finecontrolapp@gmail.com</string>
-    <string name="finecontrol_support">FineControl Support</string>
-    <string name="no_email_app_found">No email app found</string>
+    <string name="finecontrol_support">Suporte FineControl</string>
+    <string name="no_email_app_found">App de email não encontrado</string>
+    <string name="notifications">Notificação</string>
+    <string name="search">Pesquisar</string>
 </resources>

@@ -73,6 +73,7 @@
     <string name="support_email">finecontrolapp@gmail.com</string>
     <string name="finecontrol_support">FineControl Support</string>
     <string name="no_email_app_found">No email app found</string>
+    <string name="notifications">Notifications</string>
 
 
 </resources>

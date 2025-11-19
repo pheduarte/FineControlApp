@@ -11,17 +11,23 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.pheduarte.finecontrol.databinding.FragmentHomeBinding;
+import com.pheduarte.finecontrol.ui.main.DailyNotificationWorker;
 import com.pheduarte.finecontrol.ui.main.TransactionsViewModel;
 import com.pheduarte.finecontrol.data.TransactionAdapter;
 import com.pheduarte.finecontrol.login.MainActivityViewModel;
 
+import java.util.Calendar;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 public class HomeFragment extends Fragment {
 
@@ -54,6 +60,7 @@ public class HomeFragment extends Fragment {
         SharedPreferences prefs = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
         String email = prefs.getString("logged_in_email", null);
 
+        // Navigates to New Fragment
         binding.fabAction.setOnClickListener(v -> {
             NavHostFragment.findNavController(HomeFragment.this)
                     .navigate(R.id.action_homeFragment_to_newFragment);
@@ -121,7 +128,45 @@ public class HomeFragment extends Fragment {
                 }
             });
         }
+
+        // Checks if notifications are on and triggers it
+        boolean enabled = prefs.getBoolean("notifications_enabled", true);
+
+        if (enabled) {
+        scheduleDailyNotification(requireContext());
+        }
+
+
     }
+
+    // Schedule daily notification
+    public void scheduleDailyNotification(Context context) {
+
+        Calendar now = Calendar.getInstance();
+        Calendar target = Calendar.getInstance();
+        target.set(Calendar.HOUR_OF_DAY, 10);
+        target.set(Calendar.MINUTE, 0);
+        target.set(Calendar.SECOND, 0);
+
+        if (target.before(now)) {
+            target.add(Calendar.DAY_OF_YEAR, 1);
+        }
+
+        long initialDelay = target.getTimeInMillis() - now.getTimeInMillis();
+
+        PeriodicWorkRequest request =
+                new PeriodicWorkRequest.Builder(DailyNotificationWorker.class, 24, TimeUnit.HOURS)
+                        .setInitialDelay(initialDelay, TimeUnit.MILLISECONDS)
+                        .build();
+
+
+        WorkManager.getInstance(context).enqueueUniquePeriodicWork(
+                "daily_notification",
+                ExistingPeriodicWorkPolicy.UPDATE,
+                request
+        );
+    }
+
 
     // Destroy binding
     @Override
